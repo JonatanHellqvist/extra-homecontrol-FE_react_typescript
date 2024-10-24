@@ -5,6 +5,8 @@ import Start from './components/Start';
 import Devices from './components/Devices';
 import User from './components/User';
 import Chat from './components/Chat';
+import { StompSessionProvider } from 'react-stomp-hooks';
+import ChangeListener from './components/websockets/ChangeListener';
 
 function App() {
   
@@ -41,11 +43,16 @@ function App() {
 
   return (
     <>
+    
+    
     <h1>Home Controller</h1>
     <button onClick={() => setPage("start")}>Start</button>
     <button onClick={() => setPage("devices")}>Devices</button>
     <button onClick={() => setPage("user")}>User</button>
     <button onClick={() => setPage("chat")}>Chat</button>
+    {/* <StompSessionProvider url={"http://localhost:8080/websocket"} >
+    <ChangeListener/>
+    </StompSessionProvider> */}
     {/* loginform / registerform /logoutform*/}
     {admin ? <button>Admin</button> : null}
 
