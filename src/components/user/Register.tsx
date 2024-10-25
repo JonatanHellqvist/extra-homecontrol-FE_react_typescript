@@ -1,69 +1,114 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
-
-type User = {
-	username: string;
-	password: string;
-};
+import { useEffect, useState } from "react";
 
 function Register() {
-	const [user, setUser] = useState<User>({ username: '', password: '' });
-	const [success, setSuccess] = useState<boolean>(false);
 
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setUser({ ...user, [name]: value});
-	};
-
-	const handleSubmit = async (e: FormEvent) => {
-		e.preventDefault();
-		
-		const response = await fetch('http://localhost:8080/register', {
-			method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
-		});
-		
-        if (!response.ok) {
-            throw new Error('Registration failed');
-        }
-
-		setSuccess(true);//om inloggning lyckjas
-		setUser({ username: '', password: '' }); 
-
-
+	interface User {
+		id: string;
+		username: string;
+		password: string;
 	}
+
+	const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
+	const [loginForm, setLoginForm] = useState(false);
+
+	useEffect(() => {
+		console.log(loginForm);
+	  }, [loginForm]);
+
+	useEffect (() => {
+		const userFromLocalStorage = localStorage.getItem("loggedInUser");
+		if (userFromLocalStorage) {
+			setLoggedInUser(JSON.parse(userFromLocalStorage));
+		}
+	}, [loggedInUser]);
+
+	const handleShowLoginForm = () => {
+        setLoginForm(true);
+		console.log(loginForm)
+    };
+
+	const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		// "type assortions"
+
+		const target = e.currentTarget as typeof e.currentTarget &  {
+			username : {value: string };
+			password : {value: string };
+	
+		}
+		const username = target.username.value;
+		const password = target.password.value;
+		
+		fetch("http://localhost:8080/user/register", {
+		method: "POST",
+		headers: {
+			"content-type": "application/json"
+		},
+		body: JSON.stringify({username, password})
+		})
+		.then(res => res.json())
+		.then(data => {
+			console.log("Registration Sucessfull ", data)
+		// setRegister(data);
+		window.location.href = ("?page=user"); //ladda om sidan
+		setLoginForm(true);
+		})
+		.catch(error => {
+			console.error("Error when registrating User: ", error);
+		});
+	};	
 	return (
 		<div>
-			  <h2>Registrera dig</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Namn:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={user.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Lösenord:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={user.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Registrera</button>
-      </form>
+			{!loggedInUser ? (
+				<div id="registerForm">
+				 	<h1>Register</h1>
 
-      {success && <p style={{ color: 'green' }}>Registrering lyckades!</p>}
+{/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */}
+{/*  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/}
+				
+					{/* |  KUL MISS  | 
+
+					tror jag drog hela formet runt submit knappen bara tidigare..
+
+					efter att jag "städade upp koden" och splittade login och register till egna komponenter
+					så missade jag tydligen detta, tror formet hamnade bara runt submit knappen | */}
+
+{/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */}
+{/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */}
+
+					<form onSubmit={handleRegister}>
+						<div>
+							<div>
+								<div>
+									<div>
+										<label htmlFor="username">Username:</label>
+									</div>
+									<div>
+										<input type="text" id="username" name="username" required/>
+									</div>
+								</div>
+								<div>
+									<div>
+										<label htmlFor="password">Password:</label>
+									</div>
+									<div>
+										<input type="password" id="password" name="password" required/>										
+									</div>																
+								</div>
+							</div>
+							<div>
+							</div>
+							<div>
+							</div>
+						</div>					
+							<div id="registerBtns">
+								<button type="submit">Register</button>
+								<button type="button" onClick={handleShowLoginForm}>Cancel</button>
+							</div>				 		
+					</form>
+				</div>
+			) : null}	
 		</div>
 	);
 }
