@@ -1,10 +1,11 @@
-import Register from "./user/register";
+import Login from "./user/Login";
+// import Register from "./user/register";
 
 function User() {
 	return (
 		<div>
 			<h3>User</h3>
-			<Register/>
+			<Login/>
 		</div>
 	);
 }
