@@ -1,5 +1,6 @@
 import BridgeIpInput from "./user/bridgeIpInput";
 import Login from "./user/Login";
+import PrintBridgeIp from "./user/PrintBridgeIp";
 import UserMenu from "./user/UserMenu";
 // import Register from "./user/register";
 
@@ -16,7 +17,9 @@ function User() {
 		<div>
 			<h3>User</h3>
 			<UserMenu/>
+			<PrintBridgeIp userId={userId}/>
 			 <BridgeIpInput userId={userId}/>
+
 			<Login/>
 			
 		</div>
