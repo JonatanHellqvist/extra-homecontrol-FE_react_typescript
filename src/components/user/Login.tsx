@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Register from "./register";
+import Register from "./Register";
 
 
 function Login() {
