@@ -14,9 +14,13 @@ function PrintBridgeIp({userId } :ShowBridgeIpProps) {
 		},
  
 	})
-	.then(res => res.json())
+	.then(res => {
+		console.log("Response: ", res);
+		return res.text();
+	})
+		
 	.then(data => {
-		console.log(JSON.stringify(data));
+		console.log("Data: ", data);
 		setBridgeIp(data); 
 	}) 
 
