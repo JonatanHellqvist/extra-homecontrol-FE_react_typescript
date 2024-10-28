@@ -8,9 +8,9 @@ function Devices() {
 		<div>
 			<h2>Latest reading:</h2>
 			{/* <Dht11/> */}
-			<StompSessionProvider url={"http://localhost:8080/websocket"} >
+			{/* <StompSessionProvider url={"http://localhost:8080/websocket"} >
 				<ChangeListener/>
-			</StompSessionProvider>
+			</StompSessionProvider> */}
 			<h3>Devices</h3>
 			<HueDeviceList/>
 		</div>
