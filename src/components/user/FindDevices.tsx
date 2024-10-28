@@ -28,6 +28,8 @@ interface FindDevicesProps {
 function FindDevices({ userId }: FindDevicesProps)  {
 	//Fetcha devices och kunna spara dom till "my devices" på databasen om de inte redan ligger där	
 	const [devices, setDevices ] = useState<Device[]>([]);
+	// const [existingDevices, setExistingDevices] = useState<Device[]>([]); 
+
 
 	useEffect(() => {
 			fetch(`http://localhost:8080/api/lights/user/${userId}/devices`)
@@ -41,14 +43,70 @@ function FindDevices({ userId }: FindDevicesProps)  {
 		
 	}, [userId]); 
 
+	const addDevice = (device: Device, index: number) => {
+		fetch(`http://localhost:8080/${userId}/list`) 
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('Network response was not ok');
+				}
+				return response.json();
+			})
+			.then(existingDevices => {
+				console.log("Existing devices: ", existingDevices);
+	
+				if (!Array.isArray(existingDevices)) {
+					alert("Unexpected response format for existing devices.");
+					return;
+				}
+	
+				//Kolla om device rdan finns baserat på "hueindex"
+				const isDeviceExists = existingDevices.some(existingDevice => {
+					return existingDevice.hueIndex === index; 
+				});
+	
+				if (isDeviceExists) {
+					alert("Device already exists");
+					return; 
+				}
+	
+				const newDevice = {
+					deviceData: JSON.stringify(device),
+					hueIndex: index,
+				};
+	
+				return fetch(`http://localhost:8080/${userId}/list/adddevice`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(newDevice),
+				});
+			})
+			.then(response => {
+				if (!response || !response.ok) {
+					throw new Error('Error, response not ok');
+				}
+				return response.json(); 
+			})
+			.then(data => {
+				console.log("Device added successfully:", data);
+				//TODO
+				//MEDDELANDE OM ATT DEVICE HAR LAGTS TILL
+			})
+			.catch(error => console.error("Error adding device:", error));
+	};
+//+1 på index för att få rätt index från bridge
 	const printDevices = () => {
 		return devices.map((device, index) => (
 			
 			<li key={index}>
 				{device.name}: {device.state.on ? 'On' : 'Off'} 
+				 <button onClick={() => addDevice(device,index+1)}>Add Device</button> 
 			</li>
 		)); 	
 	};
+
+	
 
 	return (
 		<div>
