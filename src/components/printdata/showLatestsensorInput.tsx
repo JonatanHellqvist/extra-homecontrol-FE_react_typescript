@@ -5,6 +5,7 @@ export interface ArduinoSensorData {
 	timeStamp: string;
 	celsius: number;
 	humidity: number;
+	photoTransistorValue: number;
 }
 
 export function showLatestsensorInput(latestInput: ArduinoSensorData| null) {
@@ -20,7 +21,7 @@ export function showLatestsensorInput(latestInput: ArduinoSensorData| null) {
 	return (
 		<div>
 			<li>
-                Date: {date} | Time: {time} | Temperature: {latestInput.celsius}°C | Humidity: {latestInput.humidity}%
+                Date: {date} | Time: {time} | Temperature: {latestInput.celsius}°C | Humidity: {latestInput.humidity}% | LightSensor: {latestInput.photoTransistorValue}
             </li>
 		</div>
 	);
