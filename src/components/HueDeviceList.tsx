@@ -66,7 +66,8 @@ function HueDeviceList() {
 		return lights.map((light, index) => (
 			
 			<li key={index}>
-				{light.name}: {light.state.on ? 'On' : 'Off'} <button type="button" onClick={() => toggleLight(((index +1).toString()), !light.state.on)}>Turn {light.state.on ? 'Off' : 'On'}</button>
+				{light.name}: {light.state.on ? 'On' : 'Off'} 
+				<button type="button" onClick={() => toggleLight(((index +1).toString()), !light.state.on)}>Turn {light.state.on ? 'Off' : 'On'}</button>
 			</li>
 		)); 	
 	};
