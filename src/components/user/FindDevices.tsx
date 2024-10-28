@@ -43,7 +43,7 @@ function FindDevices({ userId }: FindDevicesProps)  {
 		
 	}, [userId]); 
 
-	const addDevice = (device: Device, index: number) => {
+	const addDevice = (device: Device, index: number, userId: String) => {
 		fetch(`http://localhost:8080/${userId}/list`) 
 			.then(response => {
 				if (!response.ok) {
@@ -72,6 +72,7 @@ function FindDevices({ userId }: FindDevicesProps)  {
 				const newDevice = {
 					deviceData: JSON.stringify(device),
 					hueIndex: index,
+					userId: userId,
 				};
 	
 				return fetch(`http://localhost:8080/${userId}/list/adddevice`, {
@@ -101,7 +102,7 @@ function FindDevices({ userId }: FindDevicesProps)  {
 			
 			<li key={index}>
 				{device.name}: {device.state.on ? 'On' : 'Off'} 
-				 <button onClick={() => addDevice(device,index+1)}>Add Device</button> 
+				 <button onClick={() => addDevice(device,index+1,userId)}>Add Device</button> 
 			</li>
 		)); 	
 	};

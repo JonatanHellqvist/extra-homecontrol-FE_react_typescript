@@ -1,11 +1,12 @@
 import React from 'react';
 
+
 export interface toggleData {
-	deviceId: String;
+	deviceId: number;
 	state: boolean;
 
 }
-export function toggleDevice(deviceId: String, state: boolean) {
+export function toggleDevice(deviceId: number, state: boolean) {
 	
 	console.log("Id: ", deviceId);
 	console.log("State: ", state);
@@ -32,3 +33,5 @@ export function toggleDevice(deviceId: String, state: boolean) {
 }
 
 export default toggleDevice;
+
+

@@ -24,9 +24,9 @@ const ChangeListener = () => {
 	useEffect(() => {
 		if(latestInput) {
 			if(latestInput.celsius > 25) {
-				toggleDevice("13",true);
+				toggleDevice(13,true);
 			} else {
-				toggleDevice("13",false);
+				toggleDevice(13,false);
 			}
 		}
 	},[latestInput]);
