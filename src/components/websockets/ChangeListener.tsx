@@ -3,20 +3,26 @@ import { useSubscription } from 'react-stomp-hooks';
 import showLatestsensorInput from '../printdata/showLatestsensorInput';
 import toggleDevice from '../toggledevice/toggleDevice';
 
-interface latestInputData {
+interface LatestInputData {
 	timeStamp: string,
 	celsius: number,
 	humidity: number,
 	photoTransistorValue: number,
 
 }
-const ChangeListener = () => {
-	const [latestInput,setLatestInput] = useState<latestInputData | null>(null);
+
+interface ChangeListenerProps {
+    onDataReceived: (data: LatestInputData) => void; // Funktion för att skicka data tillbaka
+}
+
+const ChangeListener: React.FC<ChangeListenerProps> = ({ onDataReceived }) => {
+	const [latestInput,setLatestInput] = useState<LatestInputData | null>(null);
 
 	//subscribe
 	useSubscription('/topic/changes', (message) => {
-		const changeData = JSON.parse(message.body);
+		const changeData: LatestInputData = JSON.parse(message.body);
 		setLatestInput(changeData);
+		onDataReceived(changeData); 
 		console.log(changeData);
 		
 	});
@@ -44,17 +50,8 @@ const ChangeListener = () => {
             }
         }
 	}, [latestInput]);
-	return (
-		<div>
-			{showLatestsensorInput(latestInput)}
-		</div>
-	);
+
+	return null;
 };
 
 export default ChangeListener;
-
-
-
-//TODO///////////////////////////////////////////////////////////////
-				//fixa imput för vilken temp fläkten ska gå igång
-	
