@@ -5,6 +5,7 @@ import PrintBridgeIp from "./user/PrintBridgeIp";
 import Settings from "./user/Settings";
 import MyDevices from "./user/MyDevices";
 import FindDevices from "./user/FindDevices";
+import ArduinoSensorData from "./Sensordata/ArduinoSensorData";
 // import Register from "./user/register";
 
 function User() {
@@ -46,6 +47,7 @@ function User() {
 		  <button onClick={() => setSubPage("mydevices")}>My Devices</button>
 		  <button onClick={() => setSubPage("finddevices")}>Find Devices</button>
 		  <button onClick={() => setSubPage("settings")}>Settings</button>
+		  <button onClick={() => setSubPage("arduinosensordata")}>Sensor Data</button>
 		  </div>
 	{/* <div>SubPage : {subPage}</div> */}
 	{
@@ -55,8 +57,10 @@ function User() {
 			"finddevices": 
 			<FindDevices userId={userId}/>,
 			"settings": 
-			<Settings />
-			
+			<Settings />,
+			"arduinosensordata":
+			<ArduinoSensorData/>
+
 		}	[subPage]
 	} 
 	</>
