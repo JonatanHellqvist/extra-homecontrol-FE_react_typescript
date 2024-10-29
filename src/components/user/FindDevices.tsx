@@ -32,7 +32,7 @@ function FindDevices({ userId }: FindDevicesProps)  {
 
 
 	useEffect(() => {
-			fetch(`http://localhost:8080/api/lights/user/${userId}/devices`)
+			fetch(`https://shark-app-ewg2d.ondigitalocean.app/api/lights/user/${userId}/devices`)
 				.then(response => response.json())
 				.then(data => {
 					const devicesArray: Device[] = Object.values(data);
@@ -44,7 +44,7 @@ function FindDevices({ userId }: FindDevicesProps)  {
 	}, [userId]); 
 
 	const addDevice = (device: Device, index: number, userId: String) => {
-		fetch(`http://localhost:8080/${userId}/list`) 
+		fetch(`https://shark-app-ewg2d.ondigitalocean.app/${userId}/list`) 
 			.then(response => {
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
@@ -75,7 +75,7 @@ function FindDevices({ userId }: FindDevicesProps)  {
 					userId: userId,
 				};
 	
-				return fetch(`http://localhost:8080/${userId}/list/adddevice`, {
+				return fetch(`https://shark-app-ewg2d.ondigitalocean.app/${userId}/list/adddevice`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",

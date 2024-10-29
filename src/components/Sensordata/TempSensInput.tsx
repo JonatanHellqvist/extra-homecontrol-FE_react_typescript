@@ -18,7 +18,7 @@ function TempSensInput() {
         setSelectedTemp(tempSensitivity); 
 		setSelectedLightHueBridgeIndex(tempIndex); 
 
-		fetch(`http://localhost:8080/user/tempsens/${userId}`, {
+		fetch(`https://shark-app-ewg2d.ondigitalocean.app/user/tempsens/${userId}`, {
 			            method: 'PUT',
 			            headers: {
 			                'Content-Type': 'application/json',

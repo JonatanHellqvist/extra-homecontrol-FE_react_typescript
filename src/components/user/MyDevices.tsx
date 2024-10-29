@@ -26,7 +26,7 @@ function MyDevices({ userId } : props) {
 	const fetchDevices = async () => {
 		console.log("userId: " + userId);
 		
-	fetch (`http://localhost:8080/${userId}/list`, {
+	fetch (`https://shark-app-ewg2d.ondigitalocean.app/${userId}/list`, {
 		method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ const toggleLight = (lightId: number, isOn:boolean) => {
 			device.hueIndex === lightId ? { ...device, deviceData: { ...device.deviceData, state: { ...device.deviceData.state, on: isOn }} } : device
 		)
 	);
-	fetch(`http://localhost:8080/api/lights/${lightId}/state`, {
+	fetch(`https://shark-app-ewg2d.ondigitalocean.app/api/lights/${lightId}/state`, {
 		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json',

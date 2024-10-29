@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-
-import PrintBridgeIp from "./user/PrintBridgeIp";
+import { useState } from "react";
 
 import Settings from "./user/Settings";
 import MyDevices from "./user/MyDevices";

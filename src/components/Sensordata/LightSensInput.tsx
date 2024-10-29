@@ -19,7 +19,7 @@ function LightSensInput() {
         setSelectedLight(lightSensitivity); 
 		setSelectedLightHueBridgeIndex(lightIndex);
 
-		fetch(`http://localhost:8080/user/lightsens/${userId}`, {
+		fetch(`https://shark-app-ewg2d.ondigitalocean.app/user/lightsens/${userId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',

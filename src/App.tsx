@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-// import HueDeviceList from './components/HueDeviceList'
 import Start from './components/Start';
 import Devices from './components/Devices';
 import User from './components/User';
 import Chat from './components/Chat';
-import { StompSessionProvider } from 'react-stomp-hooks';
-import ChangeListener from './components/websockets/ChangeListener';
 
 function App() {
   

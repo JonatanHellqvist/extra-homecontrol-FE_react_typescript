@@ -7,7 +7,7 @@ interface ShowBridgeIpProps {
 
 function PrintBridgeIp({userId } :ShowBridgeIpProps) {
 	const [bridgeIp, setBridgeIp] = useState<string>('');
-	fetch(`http://localhost:8080/user/bridgeip/${userId}`, {
+	fetch(`https://shark-app-ewg2d.ondigitalocean.app/user/bridgeip/${userId}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',

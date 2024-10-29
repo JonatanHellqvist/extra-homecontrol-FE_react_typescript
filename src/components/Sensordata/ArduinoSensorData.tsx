@@ -24,7 +24,7 @@ function ArduinoSensorData() {
 	  console.log(user.id);
 
 	useEffect (() => {
-		fetch(`http://localhost:8080/get-latest-dht11-sensor-data`)
+		fetch(`https://shark-app-ewg2d.ondigitalocean.app/get-latest-dht11-sensor-data`)
 		.then(response => response.json())
 		.then(data => {
 			setLatestInput(data);			
@@ -34,7 +34,7 @@ function ArduinoSensorData() {
 	}, []);
 
 	useEffect (() => {
-		fetch(`http://localhost:8080/user/tempsens/${userId}`)
+		fetch(`https://shark-app-ewg2d.ondigitalocean.app/user/tempsens/${userId}`)
 		.then(response => response.json())
 		.then(data => {
 					
@@ -47,7 +47,7 @@ function ArduinoSensorData() {
 	}, []);
 	console.log("TempS: ", tempSens, " TempI: ", tempSensIndex);
 	useEffect (() => {
-		fetch(`http://localhost:8080/user/lightsens/${userId}`)
+		fetch(`https://shark-app-ewg2d.ondigitalocean.app/user/lightsens/${userId}`)
 		.then(response => response.json())
 		.then(data => {
 					
@@ -109,7 +109,7 @@ return (
         )}
 
         {/* StompSessionProvider och ChangeListener för WebSocket */}
-        <StompSessionProvider url={"http://localhost:8080/websocket"}>
+        <StompSessionProvider url={"https://shark-app-ewg2d.ondigitalocean.app/websocket"}>
             <ChangeListener onDataReceived={updateLatestInput} />
         </StompSessionProvider>
     </div>

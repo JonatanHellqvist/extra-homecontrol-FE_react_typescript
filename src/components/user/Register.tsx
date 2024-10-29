@@ -41,7 +41,7 @@ function Register() {
 		const password = target.password.value;
 		const bridgeip = "*.*.*.*.*";
 		
-		fetch("http://localhost:8080/user/register", {
+		fetch("https://shark-app-ewg2d.ondigitalocean.app/user/register", {
 		method: "POST",
 		headers: {
 			"content-type": "application/json"
