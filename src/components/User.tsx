@@ -6,6 +6,7 @@ import Settings from "./user/Settings";
 import MyDevices from "./user/MyDevices";
 import FindDevices from "./user/FindDevices";
 import ArduinoSensorData from "./Sensordata/ArduinoSensorData";
+import Login from "./user/Login";
 // import Register from "./user/register";
 
 function User() {
@@ -43,12 +44,14 @@ function User() {
 	  
 	  return (
 		<>
+		
 		<div>
 		  <button onClick={() => setSubPage("mydevices")}>My Devices</button>
 		  <button onClick={() => setSubPage("finddevices")}>Find Devices</button>
 		  <button onClick={() => setSubPage("settings")}>Settings</button>
 		  <button onClick={() => setSubPage("arduinosensordata")}>Sensor Data</button>
 		  </div>
+		  <Login/>
 	{/* <div>SubPage : {subPage}</div> */}
 	{
 		{
