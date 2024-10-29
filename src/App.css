@@ -42,3 +42,11 @@ li {
 .read-the-docs {
   color: #888;
 }
+
+#selectTempForm {
+  border: 1px solid red;
+}
+#selectLightForm {
+  margin-top: 5px;
+  border: 1px solid blue;
+}
