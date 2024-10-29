@@ -7,7 +7,7 @@ interface UpdateBridgeIpProps {
 function BridgeIpInput({userId } :UpdateBridgeIpProps){
     const [newBridgeIp, setNewBridgeIp] = useState<string>('');
     
-
+    ////TODO visa bara efter knapptryck
 	
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

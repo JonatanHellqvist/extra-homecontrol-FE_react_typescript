@@ -40,7 +40,7 @@ function ArduinoSensorData() {
 	//TODO useEffect för ljussensorn/phototransistor
 	useEffect(() => {
 		if(latestInput) {
-            if(latestInput.photoTransistorValue < 50) {
+            if(latestInput.photoTransistorValue < 1) {
                 toggleDevice(5,true);
             } else {
                 toggleDevice(5,false);

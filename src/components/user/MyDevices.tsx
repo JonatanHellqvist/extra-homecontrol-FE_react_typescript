@@ -128,7 +128,7 @@ const toggleLight = (lightId: number, isOn:boolean) => {
             <ul>
                 {devices.map(device => (
                     <li key={device.id}>
-						{device.deviceData.name}: {device.deviceData.state.on ? 'On' : 'Off'}
+						HBI: {device.hueIndex} | Name - {device.deviceData.name}: {device.deviceData.state.on ? 'On' : 'Off'}
 						<button type="button" onClick={() => toggleLight(device.hueIndex, !device.deviceData.state.on)}>
 							Turn {device.deviceData.state.on ? 'Off' : 'On'}
 						</button>

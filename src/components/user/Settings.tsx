@@ -1,3 +1,5 @@
+import LightSensInput from "../Sensordata/LightSensInput";
+import TempSensInput from "../Sensordata/TempSensInput";
 import BridgeIpInput from "./BridgeIpInput";
 import PrintBridgeIp from "./PrintBridgeIp";
 
@@ -12,6 +14,12 @@ function Settings() {
 			<h1>Settings</h1>
 			<PrintBridgeIp userId={userId}/>
 			<BridgeIpInput userId={userId}/>
+			<div>
+				<TempSensInput /> 
+			</div>
+			<div>
+				<LightSensInput /> 
+			</div>
 		</div>
 	);
 }
