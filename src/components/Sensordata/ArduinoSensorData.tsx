@@ -13,6 +13,15 @@ interface LatestInputData {
 
 function ArduinoSensorData() {
 	const [latestInput, setLatestInput] = useState<LatestInputData | null >(null); // State för att lagra den senaste avläsningen
+	const [tempSens, setTempSens] = useState<number | null >(null); 
+	const [tempSensIndex, setTempSensIndex] = useState<number | null >(null); 
+	const [lightSens, setLightSens] = useState<number | null >(null); 
+	const [lightSensIndex, setLightSensIndex] = useState<number | null >(null); 
+
+	const userString = localStorage.getItem("loggedInUser");
+	  const user = userString ? JSON.parse(userString) : null;
+	  const userId = user?.id;
+	  console.log(user.id);
 
 	useEffect (() => {
 		fetch(`http://localhost:8080/get-latest-dht11-sensor-data`)
@@ -23,15 +32,43 @@ function ArduinoSensorData() {
 	});	
 
 	}, []);
+
+	useEffect (() => {
+		fetch(`http://localhost:8080/user/tempsens/${userId}`)
+		.then(response => response.json())
+		.then(data => {
+					
+            setTempSens(data.tempSensitivity);
+			setTempSensIndex(data.tempIndex);
+			
+			
+			console.log("tempsensdata: ", data);
+	});
+	}, []);
+	console.log("TempS: ", tempSens, " TempI: ", tempSensIndex);
+	useEffect (() => {
+		fetch(`http://localhost:8080/user/lightsens/${userId}`)
+		.then(response => response.json())
+		.then(data => {
+					
+			setLightSens(data.lightSensitivity);
+			setLightSensIndex(data.lightIndex);
+
+			console.log("lightsensdata: ", data);
+	});
+	}, []);
+	console.log("LightS: ", lightSens, " LightI: ", lightSensIndex);
 	//körs varje gång databasen uppdateras och latestInput ändras
 	//TODO ändra vilken temperatur fläkten ska gå igång och vilken index den har
 	useEffect(() => {
-		if(latestInput) {
-			if(latestInput.celsius > 24
+		if(latestInput && tempSens && tempSensIndex) {
+			if(latestInput.celsius > tempSens
 			) {
-				toggleDevice(13,true);
+				toggleDevice(tempSensIndex,true);
+				console.log("TS", tempSens);
+				
 			} else {
-				toggleDevice(13,false);
+				toggleDevice(tempSensIndex,false);
 			}
 		}
 	},[latestInput]);
@@ -39,11 +76,11 @@ function ArduinoSensorData() {
 	//input för vilken ljusstyrka innan lampa tänds
 	//TODO useEffect för ljussensorn/phototransistor
 	useEffect(() => {
-		if(latestInput) {
-            if(latestInput.photoTransistorValue < 1) {
-                toggleDevice(5,true);
-            } else {
-                toggleDevice(5,false);
+		if(latestInput && lightSens && lightSensIndex) {
+            if(latestInput.photoTransistorValue > lightSens) {
+                toggleDevice(lightSensIndex,true);
+            } else  {
+                toggleDevice(lightSensIndex,false);
             }
         }
 	}, [latestInput]);

@@ -2,20 +2,38 @@ import { useState } from "react";
 
 function TempSensInput() {
 	const [selectedTemp, setSelectedTemp] = useState<number | null >(null);
-	const [selectedIndex, setSelectedIndex] = useState<number| null >(null);
+	const [selectedLightHueBridgeIndex, setSelectedLightHueBridgeIndex] = useState<number| null >(null);
+
+	const userString = localStorage.getItem("loggedInUser");
+	  const user = userString ? JSON.parse(userString) : null;
+	  const userId = user?.id;
+	  console.log(user.id);
+
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault(); 
 		const formData = new FormData(e.currentTarget);
-        const temp = formData.get("temp") as number | null; 
-		const index = formData.get("index") as number | null; 
-        setSelectedTemp(temp); 
-		setSelectedIndex(index); 
-		console.log(selectedIndex);
-		
-    };
+        const tempSensitivity = formData.get("temp") as number | null; 
+		const tempIndex = formData.get("index") as number | null; 
+        setSelectedTemp(tempSensitivity); 
+		setSelectedLightHueBridgeIndex(tempIndex); 
 
-	//TODO spara till user
+		fetch(`http://localhost:8080/user/tempsens/${userId}`, {
+			            method: 'PUT',
+			            headers: {
+			                'Content-Type': 'application/json',
+			            },
+						body: JSON.stringify({
+							"tempSensitivity": tempSensitivity, 
+							"tempIndex": tempIndex,
+						})  
+			        })
+					.then(res => res.json())
+					.then(data => {
+						console.log(JSON.stringify(data));
+						
+					}) 	
+    };
 
 	return (
 		<div id="selectTempForm">
@@ -41,7 +59,7 @@ function TempSensInput() {
                 <button type="submit">Submit</button>
 				
                 {selectedTemp && <p>Selected temperature: {selectedTemp}°C</p>}
-				{selectedIndex && <p>Selected index: {selectedIndex}</p>}
+				{selectedLightHueBridgeIndex && <p>Selected index: {selectedLightHueBridgeIndex}</p>}
 			</form>
 		</div>
 	);

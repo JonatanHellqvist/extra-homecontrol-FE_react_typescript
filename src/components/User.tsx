@@ -9,49 +9,30 @@ import ArduinoSensorData from "./Sensordata/ArduinoSensorData";
 import Login from "./user/Login";
 // import Register from "./user/register";
 
+
+
 function User() {
 	const [subPage, setSubPage] = useState<string>("");
 	
+	
 	  const userString = localStorage.getItem("loggedInUser");
 	  const user = userString ? JSON.parse(userString) : null;
-	  const userId = user?.id;
-	  console.log(user.id);
+	  const userId = user ? user.id : null;
 
-//TODO - sub routing
-//   useEffect(() => {
+	  console.log(user);
 
-// 	let subPageUrl = subPage;
-
-// 	if(!subPageUrl) {
-// 		const queryParams = new URLSearchParams(window.location.search);
-// 		const getSubPageParam = queryParams.get("subPage");
-// 		if (getSubPageParam) {
-// 			subPageUrl = getSubPageParam;
-// 		  	setSubPage(getSubPageParam);
-// 		} else {
-// 			subPageUrl = "user";
-            
-// 		}
-// 	}
-// 		window.history.pushState(
-// 			null,
-// 			"",
-// 			"?subPage=" + subPageUrl
-// 		)
-//   }, [subPage])
-
-
-	  
+	
 	  return (
 		<>
-		
+			<Login/>
 		<div>
+			{/* TODO om inloggad user annas dölj */}
 		  <button onClick={() => setSubPage("mydevices")}>My Devices</button>
 		  <button onClick={() => setSubPage("finddevices")}>Find Devices</button>
 		  <button onClick={() => setSubPage("settings")}>Settings</button>
 		  <button onClick={() => setSubPage("arduinosensordata")}>Sensor Data</button>
-		  </div>
-		  <Login/>
+		</div>
+		  
 	{/* <div>SubPage : {subPage}</div> */}
 	{
 		{
@@ -67,7 +48,7 @@ function User() {
 		}	[subPage]
 	} 
 	</>
-	
+
 	);
 }
 
