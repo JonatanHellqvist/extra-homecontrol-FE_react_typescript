@@ -1,6 +1,7 @@
 import { StompSessionProvider } from "react-stomp-hooks";
 import ChangeListener from "../websockets/ChangeListener";
 import { useEffect, useState } from "react";
+import toggleDevice from "../toggledevice/toggleDevice";
 
 
 interface LatestInputData {
@@ -22,6 +23,30 @@ function ArduinoSensorData() {
 	});	
 
 	}, []);
+	//körs varje gång databasen uppdateras och latestInput ändras
+	//TODO ändra vilken temperatur fläkten ska gå igång och vilken index den har
+	useEffect(() => {
+		if(latestInput) {
+			if(latestInput.celsius > 24
+			) {
+				toggleDevice(13,true);
+			} else {
+				toggleDevice(13,false);
+			}
+		}
+	},[latestInput]);
+
+	//input för vilken ljusstyrka innan lampa tänds
+	//TODO useEffect för ljussensorn/phototransistor
+	useEffect(() => {
+		if(latestInput) {
+            if(latestInput.photoTransistorValue < 50) {
+                toggleDevice(5,true);
+            } else {
+                toggleDevice(5,false);
+            }
+        }
+	}, [latestInput]);
 
 	const updateLatestInput = (newData: LatestInputData) => {
 		setLatestInput(newData);
