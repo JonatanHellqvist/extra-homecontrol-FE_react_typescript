@@ -4,6 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+#main {
+ 
+  
+}
 li {
   list-style: none;
 }
@@ -62,3 +66,114 @@ li {
 #selectedLightDiv {
   border: 3px solid green;
 }
+
+#aiChatDiv {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  min-width: 100%;
+  max-width: 70%;
+
+  margin: 0 auto; 
+}
+#aiChatH1 {
+  background-color: rgb(228, 227, 227);
+  margin-top: 0;
+  margin-bottom: 0;
+  /* border: 1px solid black; */
+  /* background-color: green; */
+  border-bottom: 2px solid  black;
+  
+}
+#aiChatUl {
+  border-bottom: 1px solid black;
+  min-height: 200px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  /* border: 1px solid red; */
+  padding: 0;
+  margin:0;
+  
+  
+}
+#aiChatLi {
+  /* border: 1px solid green; */
+  margin: 10px;           
+  width: 95%;                   
+  text-align: center;           
+}
+  
+
+#aiChatInputDiv {
+  
+  border: 1px solid black; 
+  background-color: white;
+  display: flex;               /* Använd flexbox */
+  align-items: center;         /* Centrera vertikalt */
+  justify-content: space-between; /* Fördela utrymmet */
+  padding: 3px;  
+              
+}
+#aiChatInputButton {
+ width: 20%;
+ border-radius: 3px;
+
+}
+#aiChatInput {
+  
+  color: black;
+  font-weight: bold;
+  background-color: rgb(228, 227, 227);
+  margin: 0px;
+  padding: 0px;
+  width: 79%;
+  height: 35px;
+  text-align: bottom;
+}
+
+#settingsAutoLightDiv {
+background-color: rgb(121, 60, 60);
+}
+#settingsAutoFanDiv{
+background-color: rgb(56, 78, 71);
+}
+#settingsInformationDiv {
+border: 1px solid red;
+margin: 0;
+padding: 10px;
+}
+#settingsInformationDiv p, h3{
+  /* border: 1px solid red; */
+  margin: 0;
+  padding-top: 0px;
+  }
+#settingsDiv{
+  width: 60%;
+  max-width: 60%;
+  margin: 10px auto;
+}
+#settingsH1 {
+  margin-top: 0;
+  margin-bottom: 7px;
+}
+
+#selectedTempDiv h3,h4,p{
+margin: 0;
+padding: 0;  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

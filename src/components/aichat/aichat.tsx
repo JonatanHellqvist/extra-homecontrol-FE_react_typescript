@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, useEffect } from 'react';
 
 type ChatMessage = {
 	sender: 'user' | 'system';
@@ -11,10 +11,23 @@ function Aichat() {
 
 	const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
 	const [inputValue, setInputValue] = useState<string>(''); 
+	const [isWelcomeMessageAdded, setIsWelcomeMessageAdded] = useState<boolean>(false); // Ny tillstånd för att spåra meddelandet
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setInputValue(e.target.value);
 	};
+	   
+	   useEffect(() => {
+        // Kontrollera om chatHistoriken är tom
+        if (chatHistory.length === 0 && !isWelcomeMessageAdded) {
+            setChatHistory((prev) => [
+                ...prev,
+                { sender: 'system', message: "Hej och välkommen till chatten, hur kan jag hjälpa dig med smarta hemlösningar idag?" }
+            ]);
+			setIsWelcomeMessageAdded(true);
+        }
+    }, [chatHistory, isWelcomeMessageAdded]); // Kör effekt när chatHistory ändras
+
 
 	const handleSend = () => {
 		if (inputValue) {
@@ -37,23 +50,23 @@ function Aichat() {
 	};
 
 	return (
-		<div>
-			<h1>Chat</h1>
-			<ul id="chatUl">
+		<div id="aiChatDiv">
+			<h1 id="aiChatH1">Chat</h1>
+			<ul id="aiChatUl">
 				{chatHistory.map((entry, index) => (
-					<li key={index} id="chatLi" style={{ fontWeight: entry.sender === 'user' ? 'bold' : 'normal' }}>
+					<li key={index} id="aiChatLi" style={{ fontWeight: entry.sender === 'user' ? 'bold' : 'normal' }}>
 						{entry.sender}: {entry.message}
 					</li>
 				))}
 			</ul>
-			<div>
+			<div id="aiChatInputDiv">
 				<input
 					type="text"
-					id="chatInput"
+					id="aiChatInput"
 					value={inputValue}
 					onChange={handleInputChange}
 				/>
-				<button id="chatInputButton" onClick={handleSend}>Send</button>
+				<button id="aiChatInputButton" onClick={handleSend}>Send</button>
 			</div>
 		</div>
 	);

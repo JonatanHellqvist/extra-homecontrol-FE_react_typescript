@@ -43,28 +43,19 @@ function LightSensInputAuth() {
 		<div id="selectLightForm">
 			<h3>AutoLight</h3>
 			<form onSubmit={handleSubmit}>
-				<label>Select sensitivity for lightSensor:</label>
-                <div>
-					<div>
-					<label htmlFor="light">Light:</label>
-					</div>
-					<div>
-					<input type="text" id="light" name="light" required/>
-					</div>
+                <div>					
+					<label htmlFor="light">Select sensitivity for lightSensor:</label>
+					<input type="text" id="light" name="light" required/>	
 				</div>
-				<label>Select the deviceIndex from Huebridge:</label>
-                <div>
-					<div>
-					<label htmlFor="index">Index:</label>
-					</div>
-					<div>
-					<input type="text" id="index" name="index" required/>
-					</div>
+				
+                <div>				
+					<label htmlFor="index">Select the deviceIndex from Huebridge:</label>
+					<input type="text" id="index" name="index" required/>	
 				</div>
                 <button type="submit">Submit</button>
 				
-                {selectedLight && <p>Selected Light sensitivity: {selectedLight}</p>}
-				{selectedLightHueBridgeIndex && <p>Selected Index: {selectedLightHueBridgeIndex}</p>}
+                {selectedLight && <p>New Selected Light sensitivity: {selectedLight}</p>}
+				{selectedLightHueBridgeIndex && <p>New Selected Index: {selectedLightHueBridgeIndex}</p>}
 			</form>
 		</div>
 	);

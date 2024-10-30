@@ -38,28 +38,22 @@ function TempSensInputAuth() {
 	return (
 		<div id="selectTempForm">
 			<form onSubmit={handleSubmit}>
-				<label>Select what temperature fan will start:</label>
-                <div>
-					<div>
-					<label htmlFor="temp">Temp:</label>
-					</div>
-					<div>
+			<div>
+						
+					<label htmlFor="temp">Select at what Temperature to start the fan:</label>
 					<input type="text" id="temp" name="temp" required/>
-					</div>
-				</div>
-				<label>Select index for fandevice from HueBridge:</label>
+			</div>
+				
                 <div>
-					<div>
-					<label htmlFor="index">Index:</label>
-					</div>
-					<div>
+				<label>Select RID for device:</label>
+					<label htmlFor="index">RID:</label>
 					<input type="text" id="index" name="index" required/>
-					</div>
+					
 				</div>
                 <button type="submit">Submit</button>
 				
-                {selectedTemp && <p>Selected temperature: {selectedTemp}°C</p>}
-				{selectedLightHueBridgeIndex && <p>Selected RID: {selectedLightHueBridgeIndex}</p>}
+                {selectedTemp && <p>New Selected temperature: {selectedTemp}°C</p>}
+				{selectedLightHueBridgeIndex && <p>New Selected RID: {selectedLightHueBridgeIndex}</p>} 
 			</form>
 		</div>
 	);
