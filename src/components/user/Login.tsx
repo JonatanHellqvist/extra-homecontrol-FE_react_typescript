@@ -3,6 +3,10 @@ import Register from "./Register";
 
 
 function Login() {
+
+	// const apiURL = import.meta.env.REACT_APP_LOCAL_URL
+	const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
+
 	interface User {
 		id: string;
 		username: string;
@@ -29,7 +33,7 @@ function Login() {
 	const handleLogin = async (e:React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const res = await fetch ("https://clownfish-app-2jcw3.ondigitalocean.app/user/login", {
+		const res = await fetch (`${apiURL}/user/login`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"

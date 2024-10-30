@@ -11,6 +11,9 @@ function Register() {
 	const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
 	const [loginForm, setLoginForm] = useState(false);
 
+	// const apiURL = import.meta.env.REACT_APP_LOCAL_URL
+	const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
+
 	useEffect(() => {
 		console.log(loginForm);
 	  }, [loginForm]);
@@ -41,7 +44,7 @@ function Register() {
 		const password = target.password.value;
 		const bridgeip = "*.*.*.*.*";
 		
-		fetch("https://clownfish-app-2jcw3.ondigitalocean.app/user/register", {
+		fetch(`${apiURL}/user/register`, {
 		method: "POST",
 		headers: {
 			"content-type": "application/json"

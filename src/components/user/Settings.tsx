@@ -1,6 +1,10 @@
 // import HueComponent from "../HueComponent";
-import LightSensInput from "../Sensordata/LightSensInput";
-import TempSensInput from "../Sensordata/TempSensInput";
+
+import AutoToggleFanComponent from "../Sensordata/AutoToggleFanComponent";
+import AutoToggleLightComponent from "../Sensordata/AutoToggleLightComponent";
+// import LightSensInputAuth from "../Sensordata/LightSensInputAuth";
+// import TempSensInput from "../Sensordata/TempSensInput";
+// import TempSensInputAuth from "../Sensordata/TempSensInputAuth";
 
 
 function Settings() {
@@ -16,10 +20,16 @@ function Settings() {
 			{/* <BridgeIpInput userId={userId}/> */}
 
 			<div>
-				<TempSensInput /> 
+				{/* lokalt ip */}
+				{/* <TempSensInput />*/}
+				{/* <TempSensInputAuth /> */}
+				<AutoToggleFanComponent/>
 			</div>
 			<div>
-				<LightSensInput /> 
+				{/* lokalt ip */}
+				{/* <LightSensInput />  */}
+				{/* <LightSensInputAuth />  */}
+				<AutoToggleLightComponent/>
 			</div>
 			<div>
 			{/* <HueComponent/> */}

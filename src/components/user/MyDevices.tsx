@@ -21,12 +21,13 @@ interface Device {
  
 function MyDevices({ userId } : props) {
 	const [devices, setDevices] = useState<Device[]>([]);
-	
+	// const apiURL = import.meta.env.REACT_APP_LOCAL_URL
+	const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
 	
 	const fetchDevices = async () => {
 		console.log("userId: " + userId);
 		
-	fetch (`https://clownfish-app-2jcw3.ondigitalocean.app/${userId}/list`, {
+	fetch (`${apiURL}/${userId}/list`, {
 		method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -103,7 +104,7 @@ const toggleLight = (lightId: number, isOn:boolean) => {
 			device.hueIndex === lightId ? { ...device, deviceData: { ...device.deviceData, state: { ...device.deviceData.state, on: isOn }} } : device
 		)
 	);
-	fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/api/lights/${lightId}/state`, {
+	fetch(`${apiURL}/api/lights/${lightId}/state`, {
 		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json',

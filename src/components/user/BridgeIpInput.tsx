@@ -7,6 +7,9 @@ interface UpdateBridgeIpProps {
 function BridgeIpInput({userId } :UpdateBridgeIpProps){
     const [newBridgeIp, setNewBridgeIp] = useState<string>('');
     
+    // const apiURL = import.meta.env.REACT_APP_LOCAL_URL
+    const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
+    
     ////TODO visa bara efter knapptryck
 	
 
@@ -17,7 +20,7 @@ function BridgeIpInput({userId } :UpdateBridgeIpProps){
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/user/bridgeip/${userId}`, {
+        fetch(`${apiURL}/user/bridgeip/${userId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -26,13 +26,17 @@ interface FindDevicesProps {
 }
 
 function FindDevices({ userId }: FindDevicesProps)  {
+
+	// const apiURL = import.meta.env.REACT_APP_LOCAL_URL
+	const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
+
 	//Fetcha devices och kunna spara dom till "my devices" på databasen om de inte redan ligger där	
 	const [devices, setDevices ] = useState<Device[]>([]);
 	// const [existingDevices, setExistingDevices] = useState<Device[]>([]); 
 
 
 	useEffect(() => {
-			fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/api/lights/user/${userId}/devices`)
+			fetch(`${apiURL}/api/lights/user/${userId}/devices`)
 				.then(response => response.json())
 				.then(data => {
 					const devicesArray: Device[] = Object.values(data);
@@ -44,7 +48,7 @@ function FindDevices({ userId }: FindDevicesProps)  {
 	}, [userId]); 
 
 	const addDevice = (device: Device, index: number, userId: String) => {
-		fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/${userId}/list`) 
+		fetch(`${apiURL}/${userId}/list`) 
 			.then(response => {
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
@@ -75,7 +79,7 @@ function FindDevices({ userId }: FindDevicesProps)  {
 					userId: userId,
 				};
 	
-				return fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/${userId}/list/adddevice`, {
+				return fetch(`${apiURL}/${userId}/list/adddevice`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",

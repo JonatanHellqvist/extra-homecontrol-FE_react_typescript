@@ -24,8 +24,11 @@ interface Light {
 function HueDeviceList() {
 	const [lights, setLights ] = useState<Light[]>([]);
 
+	// const apiURL = import.meta.env.REACT_APP_LOCAL_URL
+	const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
+
 	useEffect(() => {
-		fetch('https://clownfish-app-2jcw3.ondigitalocean.app/api/lights')
+		fetch(`${apiURL}/api/lights`)
             .then(response => response.json())
             .then(data => {
 				const lightsArray: Light[] = Object.values(data);
@@ -43,7 +46,7 @@ function HueDeviceList() {
 				(index +1).toString() === lightId ? { ...light, state: { ...light.state, on: isOn }} : light
 			)
 		);
-		fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/api/lights/${lightId}/state`, {
+		fetch(`${apiURL}/api/lights/${lightId}/state`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
