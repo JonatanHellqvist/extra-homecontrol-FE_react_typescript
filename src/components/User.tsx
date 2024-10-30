@@ -23,7 +23,7 @@ function User() {
 	
 	  return (
 		<>
-			<Login/>
+			
 		<div>
 			{/* TODO om inloggad user annas dölj */}
 		  <button onClick={() => setSubPage("mydevices")}>My Devices</button>
@@ -31,8 +31,8 @@ function User() {
 		  <button onClick={() => setSubPage("settings")}>Settings</button>
 		  <button onClick={() => setSubPage("arduinosensordata")}>Sensor Data</button>
 		</div>
+		
 		  
-	{/* <div>SubPage : {subPage}</div> */}
 	{
 		{
 			"mydevices":
@@ -47,81 +47,13 @@ function User() {
 
 		}	[subPage]
 	} 
+	<div>
+		<h3>Welcome to Home Controller</h3>
+	<Login/>
+	</div>
 	</>
 
 	);
 }
-
-		  {/* {subPage === "mydevices" && (
-			<>
-			<PrintBridgeIp userId={userId}/>
-			<MyDevices userId={userId}/>
-			</>
-		  )}
-		  {subPage === "finddevices" && <FindDevices userId={userId}/>}
-		  {subPage === "settings" && <Settings />}
-		  <Login />
-		</div>
-	  );
-	} */}
-	
 	export default User;
-	// {
-	// 	{
-	// 	  "start":<Start />,
-	// 	  "devices":<Devices />,
-	// 	  "user":<User />,
-	// 	  "chat": <Chat />
-	// 	} [page]
-	//   }
-
-// return (
-// 	<div>
-// 		<h3>User</h3>
-// 		<UserMenu userId={userId}/>
-// 		<PrintBridgeIp userId={userId}/>
-// 		 <BridgeIpInput userId={userId}/>
-
-// 		<Login/>
-		
-// 	</div>
-// );
-// }
-
-// export default User;
-
-
-
-
-//   return (
-//     <>
-    
-    
-//     <h1>Home Controller</h1>
-//     <button onClick={() => setPage("start")}>Start</button>
-//     <button onClick={() => setPage("devices")}>Devices</button>
-//     <button onClick={() => setPage("user")}>User</button>
-//     <button onClick={() => setPage("chat")}>Chat</button>
-//     {/* <StompSessionProvider url={"http://localhost:8080/websocket"} >
-//     <ChangeListener/>
-//     </StompSessionProvider> */}
-//     {/* loginform / registerform /logoutform*/}
-//     {admin ? <button>Admin</button> : null}
-
-//     {/* <div>Page : {page}</div> */}
-//      {/* <HueDeviceList /> */}
-//     {
-//       {
-//         "start":<Start />,
-//         "devices":<Devices />,
-//         "user":<User />,
-//         "chat": <Chat />
-//       } [page]
-//     }
-
-
-//     </>
-//   )
-// }
-
-// export default App
+	

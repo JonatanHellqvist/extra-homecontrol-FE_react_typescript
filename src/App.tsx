@@ -18,9 +18,12 @@ function App() {
     return (
       <div>
         <Link to="/start"><button>Start</button></Link>
-        <Link to="/devices"><button>Devices</button></Link>
+
+        {/* Lokalt ip */}
+        {/* <Link to="/devices"><button>Devices</button></Link> */} 
+
         <Link to="/user"><button>User</button></Link>
-        <Link to="/chat"><button>Chat</button></Link>
+        <Link to="/chat"><button>Help</button></Link>
       </div>
     );
   };
@@ -28,12 +31,15 @@ function App() {
   return (
       <>
     <Router>
-    <div>
+    <div id="main">
       <h1>Home Controller</h1>
       <NavigationButtons/>
       <Routes>
         <Route path="/start" element={<Start />} />
-        <Route path="/devices" element={<Devices />} />
+
+        {/* Lokalt ip */}
+        {/* <Route path="/devices" element={<Devices />} /> */}
+        
         <Route path="/user" element={<User />} />
         <Route path="/chat" element={<Chat />} />
       </Routes>
