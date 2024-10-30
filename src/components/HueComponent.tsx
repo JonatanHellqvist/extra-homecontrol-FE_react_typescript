@@ -7,7 +7,7 @@ const HueComponent: React.FC = () => {
   // Hantera Hue-autentisering
   const handleHueAuth = () => {
 	const clientId = import.meta.env.VITE_HUE_CLIENT_ID;
-	const redirectUri = encodeURIComponent('https://starfish-app-a5j77.ondigitalocean.app/user'); //registerad URI på hue
+	const redirectUri = encodeURIComponent('https://starfish-app-a5j77.ondigitalocean.app'); //registerad URI på hue
 	const state = 'random_string';
   
 	const authUrl = `https://api.meethue.com/v2/oauth2/authorize?client_id=${clientId}&response_type=code&state=${state}&redirect_uri=${redirectUri}`;
