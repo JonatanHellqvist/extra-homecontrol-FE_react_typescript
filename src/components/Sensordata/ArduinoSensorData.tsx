@@ -116,12 +116,17 @@ function ArduinoSensorData() {
 	let time = timeStampString.substring(11, 16);
 
 return (
-    <div>
-        <h3>Arduino Sensor Data:</h3>
-        {latestInput ? ( //Om latestInput är tillgänglig
-            <li>
+	<>
+    <div id="arduinoSensorDataDiv">
+		<div id="arduinoSensorDataTitleDiv">
+        <h1 id="arduinoSensorDataTitleH1">Arduino Sensor Data:</h1>
+		<h3>Latest input from Arduino:</h3>
+		</div>
+        {latestInput ? ( 
+            <h4 id="arduinoSensorDataLatestInput">
                 Date: {date} | Time: {time} | Temperature: {latestInput.celsius}°C | Humidity: {latestInput.humidity}% | LightSensor: {latestInput.photoTransistorValue}
-            </li>
+            </h4>
+			
         ) : (
             <p>Loading latest data...</p> // Visa laddningsmeddelande när latestInput är null
         )}
@@ -131,6 +136,23 @@ return (
             <ChangeListener onDataReceived={updateLatestInput} />
         </StompSessionProvider>
     </div>
+	<div id="autoSettings">
+
+		<div>
+		<h2>AutoFan</h2>
+		<h3>Current settings for AutoFan:</h3>
+		<h4>Selected temperature: {tempSens}°C | Selected device RID: {tempSensIndex}</h4>
+		</div>
+		<div>
+		<h2>AutoLight</h2>
+                <h3>Current settings for AutoLight:</h3>
+				<h4>Selected lightsense: {lightSens} | Selected device RID: {lightSensIndex}</h4>
+		</div>
+{/* 
+		<p>AutoFan Settings: {lightSens} | { lightSensIndex}</p>
+		<p>AutoLight Settings: {tempSens} | { tempSensIndex}</p> */}
+	</div>
+	</>
 );
 }
 
