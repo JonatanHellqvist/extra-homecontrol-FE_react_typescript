@@ -165,8 +165,11 @@ background-color: rgb(90, 88, 88);
 padding: 10px; */
 }
 #settingsInformationTextDiv {
- padding: 10px;
+ /* padding: 10px; */
  background-color: rgb(90, 88, 88);
+}
+#settingsInformationTextDiv p{
+  padding: 10px;
 }
 #settingsInformationTextDiv p, h3{
   /* border: 1px solid red; */
@@ -195,7 +198,7 @@ padding: 10px; */
   padding:0;
   margin-bottom: 0;
   /* padding-bottom: 25px; */
-  padding: 25px;
+  padding: 10px;
   font-size: 35px;
   /* text-decoration: underline; */
 }
@@ -250,7 +253,7 @@ width: 100%;
   padding: 10px;
 }
 #arduinoSensorDataTitleDiv {
-padding: 25px;
+/* padding: 25px; */
 }
 #arduinoSensorDataTitle {
   margin: 0;
@@ -262,19 +265,61 @@ padding: 25px;
 #arduinoSensorDataTitleH1 {
   background-color: black;
 margin-top: 0;
-padding:0;
+margin: 0;
+padding:10px;
 margin-bottom: 0;
 
 font-size: 35px;
 
 }
 #autoSettings {
-  border: 1px solid red;
+  /* border: 1px solid red; */
+}
+#autoSettings h2,h3{
+  margin: 0;
+  background-color: black;
 }
 
+#autoSettings h4 {
+  padding: 10px;
+  background-color: rgb(90, 88, 88);
+}
 
 #settingsDiv{
 width: 60%;
 max-width: 60%;
 margin: 10px auto;
 }
+
+#loggedInDiv {
+  background-color: black;
+}
+#loggedInUserH1 {
+  background-color: black;
+  padding: 10px;
+  margin: 0;
+  font-size: 35px;
+}
+#loggedInUserH1 button {
+  margin-top: 15px;
+  padding-top: 15px;
+}
+#loginFormBtnsDiv {
+  display: flex;
+  background-color: red;
+}
+#loginFormBtnsDiv button {
+  width: 100%;
+}
+#loggedInDiv {
+  border: 1px solid green;
+  padding: 5px;
+  
+}
+#loggedInDiv button {
+  border-radius: 3px;
+  
+  padding: 5px;
+  width: 100%;
+}
+

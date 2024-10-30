@@ -119,9 +119,9 @@ return (
 	<>
     <div id="arduinoSensorDataDiv">
 		<div id="arduinoSensorDataTitleDiv">
-        <h1 id="arduinoSensorDataTitleH1">Arduino Sensor Data:</h1>
-		<h3>Latest input from Arduino:</h3>
+        <h1 id="arduinoSensorDataTitleH1">Arduino Sensor Data</h1>
 		</div>
+		<h3>Latest input from Arduino:</h3>
         {latestInput ? ( 
             <h4 id="arduinoSensorDataLatestInput">
                 Date: {date} | Time: {time} | Temperature: {latestInput.celsius}°C | Humidity: {latestInput.humidity}% | LightSensor: {latestInput.photoTransistorValue}
@@ -139,15 +139,19 @@ return (
 	<div id="autoSettings">
 
 		<div>
-		<h2>AutoFan</h2>
-		<h3>Current settings for AutoFan:</h3>
-		<h4>Selected temperature: {tempSens}°C | Selected device RID: {tempSensIndex}</h4>
+			<div>
+			<h2>AutoFan</h2>
+			<h3>Current settings for AutoFan:</h3>
+			</div>
+				<h4>Selected temperature: {tempSens}°C | Selected device RID: {tempSensIndex}</h4>
 		</div>
-		<div>
-		<h2>AutoLight</h2>
-                <h3>Current settings for AutoLight:</h3>
-				<h4>Selected lightsense: {lightSens} | Selected device RID: {lightSensIndex}</h4>
-		</div>
+			<div>
+				<div>
+					<h2>AutoLight</h2>
+					<h3>Current settings for AutoLight:</h3>
+				</div>
+					<h4>Selected lightsense: {lightSens} | Selected device RID: {lightSensIndex}</h4>
+			</div>
 {/* 
 		<p>AutoFan Settings: {lightSens} | { lightSensIndex}</p>
 		<p>AutoLight Settings: {tempSens} | { tempSensIndex}</p> */}
