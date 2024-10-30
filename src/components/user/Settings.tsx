@@ -1,4 +1,4 @@
-import HueComponent from "../HueComponent";
+// import HueComponent from "../HueComponent";
 import LightSensInput from "../Sensordata/LightSensInput";
 import TempSensInput from "../Sensordata/TempSensInput";
 
@@ -22,7 +22,7 @@ function Settings() {
 				<LightSensInput /> 
 			</div>
 			<div>
-			<HueComponent/>
+			{/* <HueComponent/> */}
 			{/* <FindDevicesFromAuthUser userId= {userId}/> */}
 			</div>
 		</div>

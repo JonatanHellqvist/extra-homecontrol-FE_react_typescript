@@ -7,6 +7,7 @@ import User from './components/User';
 import Chat from './components/Chat';
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import HueComponent from './components/HueComponent';
 // import { StompSessionProvider } from 'react-stomp-hooks';
 // import ChangeListener from './components/websockets/ChangeListener';
 // import HueComponent from './components/HueComponent';
@@ -38,6 +39,9 @@ function App() {
       </Routes>
       </div>
     </Router>
+    <div>
+    <HueComponent/>
+    </div>
     </>
   );
 }
