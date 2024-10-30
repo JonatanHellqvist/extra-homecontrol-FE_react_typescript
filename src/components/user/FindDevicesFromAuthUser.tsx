@@ -127,17 +127,19 @@ function FindDevicesFromAuthUser({ userId }: FindDevicesProps)  {
 	};
 	
     return (
-        <div>
+        <div id="deviceUlAuthDiv">
             <h2>Hue Devices</h2>
             {devices.length > 0 ? (
-                <ul>
+                <ul id="deviceUlAuth">
                     {devices.map((device) => (
-                        <li key={device.id}>
-                            <strong>Name:</strong> {device.metadata.name} | 
+                        <li key={device.id} id="deviceUlAuthLi">
+                            <h3 id="deviceUlAuthLiName">{device.metadata.name}</h3>
                             {/* <strong> Model:</strong> {device.product_data.model_id} */}
+							<div id="deviceUlAuthLiBtns">
 							<button onClick={() => getDeviceInfo (device.services["1"].rid)}>DeviceInfo</button> 
 							<button onClick={() => toggleDevice(device.services["1"].rid, true)}>TurnOn</button> 
 							<button onClick={() => toggleDevice(device.services["1"].rid, false)}>TurnOFF</button> 
+							</div>
 
 							
                         </li>

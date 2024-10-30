@@ -48,23 +48,34 @@ li {
 }
 
 #selectTempForm {
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  /* centrera */
+}
+#selectTempFormButton {
+  margin-top: 5px;
+  border-radius: 3px;
+  width: 100%;
 }
 #selectLightForm {
-  margin-top: 5px;
-  border: 1px solid blue;
+  /* margin-top: 5px; */
+  /* border: 1px solid blue; */
+  /* centrera */
 }
-
+#selectLightFormButton {
+  margin-top: 5px;
+  border-radius: 3px;
+  width: 100%;
+}
 #AuthDiv {
   border: 1px solid green;
 }
 
 #selectedTempDiv {
-  border: 3px solid green;
+  /* border: 3px solid green; */
 }
 
 #selectedLightDiv {
-  border: 3px solid green;
+  /* border: 3px solid green; */
 }
 
 #aiChatDiv {
@@ -135,20 +146,43 @@ li {
 }
 
 #settingsAutoLightDiv {
-background-color: rgb(121, 60, 60);
+  background-color: rgb(90, 88, 88);
 }
 #settingsAutoFanDiv{
-background-color: rgb(56, 78, 71);
+  background-color: rgb(90, 88, 88);
+}
+#settingsAutoFanDiv h3,h2, #settingsAutoLightDiv h3,h2 {
+  background-color: rgb(0, 0, 0);
+}
+#settingsAutoFanDiv h2, #settingsAutoLightDiv h2 {
+  margin: 0;
+  text-decoration: underline;
 }
 #settingsInformationDiv {
-border: 1px solid red;
-margin: 0;
-padding: 10px;
+border: 1px solid rgb(0, 0, 0);
+background-color: rgb(90, 88, 88);
+/* margin: 0;
+padding: 10px; */
 }
-#settingsInformationDiv p, h3{
+#settingsInformationTextDiv {
+ padding: 10px;
+ background-color: rgb(90, 88, 88);
+}
+#settingsInformationTextDiv p, h3{
   /* border: 1px solid red; */
   margin: 0;
   padding-top: 0px;
+  }
+  #settingsInformationDiv h1 {
+    margin: 0;
+    padding: 0;
+  }
+  #settingsH1Div {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+    align-content: center;
   }
 #settingsDiv{
   width: 60%;
@@ -156,24 +190,91 @@ padding: 10px;
   margin: 10px auto;
 }
 #settingsH1 {
+  background-color: black;
   margin-top: 0;
-  margin-bottom: 7px;
+  padding:0;
+  margin-bottom: 0;
+  /* padding-bottom: 25px; */
+  padding: 25px;
+  font-size: 35px;
+  /* text-decoration: underline; */
 }
 
 #selectedTempDiv h3,h4,p{
 margin: 0;
 padding: 0;  
 }
+#selectedLightDiv h3,h4,p{
+  margin:0;
+  padding:0;
+}
 
 
 
 
+#deviceUlAuthDiv {
+  background-color: #525353;
+}
+#deviceUlAuthDiv h2 {
+  margin: 0;
+  padding: 10px;
+}
+#deviceUlAuth {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#deviceUlAuthLi {
+  background-color: rgb(90, 88, 88);
+}
+#deviceUlAuthLiBtns {
+display:flex;
+border: 2px solid rgb(37, 37, 37);
+border-bottom: 3px solid black;
+background-color: rgb(61, 60, 60);
+}
+#deviceUlAuthLiBtns button {
+margin: 5px;
+border-radius: 2px;
+width: 100%;
+}
+#deviceUlAuthLiName {
+  font-size: 25px;
+}
+
+#arduinoSensorDataDiv {
+ background-color: black;
+}
+#arduinoSensorDataLatestInput {
+  background-color: rgb(90, 88, 88);
+  padding: 10px;
+}
+#arduinoSensorDataTitleDiv {
+padding: 25px;
+}
+#arduinoSensorDataTitle {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+#arduinoSensorDataTitleH1 {
+  background-color: black;
+margin-top: 0;
+padding:0;
+margin-bottom: 0;
+
+font-size: 35px;
+
+}
+#autoSettings {
+  border: 1px solid red;
+}
 
 
-
-
-
-
-
-
-
+#settingsDiv{
+width: 60%;
+max-width: 60%;
+margin: 10px auto;
+}

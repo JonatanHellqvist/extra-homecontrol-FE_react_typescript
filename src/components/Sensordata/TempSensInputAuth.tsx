@@ -40,17 +40,17 @@ function TempSensInputAuth() {
 			<form onSubmit={handleSubmit}>
 			<div>
 						
-					<label htmlFor="temp">Select at what Temperature to start the fan:</label>
-					<input type="text" id="temp" name="temp" required/>
+					<label htmlFor="temp">Select at what Temperature to start the fan:</label><br />
+					<input type="text" id="temp" name="temp" required/> 
 			</div>
 				
                 <div>
-				<label>Select RID for device:</label>
-					<label htmlFor="index">RID:</label>
-					<input type="text" id="index" name="index" required/>
+				<label htmlFor="index">Select RID for device:</label><br />
+					{/* <label htmlFor="index">RID:</label> */}
+					<input type="text" id="index" name="index" />
 					
 				</div>
-                <button type="submit">Submit</button>
+                <button type="submit" id="selectTempFormButton">Submit</button>
 				
                 {selectedTemp && <p>New Selected temperature: {selectedTemp}°C</p>}
 				{selectedLightHueBridgeIndex && <p>New Selected RID: {selectedLightHueBridgeIndex}</p>} 

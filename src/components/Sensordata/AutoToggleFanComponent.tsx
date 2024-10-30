@@ -39,9 +39,12 @@ function AutoToggleFanComponent() {
 	return (
 		<div>
 			<div id="selectedTempDiv">
+				<div>
+				<h2>AutoFan</h2>
 				<h3>Current settings for AutoFan:</h3>
-				<h4>Selected temperature: {selectedTemp}°C | Selected device: {selectedDeviceRidIndex}</h4>
-				<p>selected device namn?</p>
+				</div>
+				<h4>Selected temperature: {selectedTemp}°C | Selected device RID: {selectedDeviceRidIndex}</h4>
+				{/* <p>selected device namn?</p> */}
 			</div>
 			<TempSensInputAuth/>
 		</div>

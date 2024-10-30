@@ -56,9 +56,10 @@ function AutoToggleFanComponent() {
 	return (
 		<div>
 			<div id="selectedLightDiv">
+                <h2>AutoLight</h2>
                 <h3>Current settings for AutoLight:</h3>
 				<h4>Selected lightsense: {selectedLight} | Selected device RID: {selectedDeviceRidIndex}</h4>
-				<p>selected device name?</p>
+				{/* <p>selected device name?</p> */}
 			</div>
 			<LightSensInputAuth/>
 		</div>
