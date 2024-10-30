@@ -19,7 +19,7 @@ function LightSensInput() {
         setSelectedLight(lightSensitivity); 
 		setSelectedLightHueBridgeIndex(lightIndex);
 
-		fetch(`https://shark-app-ewg2d.ondigitalocean.app/user/lightsens/${userId}`, {
+		fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/user/lightsens/${userId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',

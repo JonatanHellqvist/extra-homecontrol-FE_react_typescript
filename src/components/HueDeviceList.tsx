@@ -25,7 +25,7 @@ function HueDeviceList() {
 	const [lights, setLights ] = useState<Light[]>([]);
 
 	useEffect(() => {
-		fetch('https://shark-app-ewg2d.ondigitalocean.app/api/lights')
+		fetch('https://clownfish-app-2jcw3.ondigitalocean.app/api/lights')
             .then(response => response.json())
             .then(data => {
 				const lightsArray: Light[] = Object.values(data);
@@ -43,7 +43,7 @@ function HueDeviceList() {
 				(index +1).toString() === lightId ? { ...light, state: { ...light.state, on: isOn }} : light
 			)
 		);
-		fetch(`https://shark-app-ewg2d.ondigitalocean.app/api/lights/${lightId}/state`, {
+		fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/api/lights/${lightId}/state`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ export function toggleDevice(deviceId: number, state: boolean) {
 	console.log("Id: ", deviceId);
 	console.log("State: ", state);
 		
-		fetch(`https://shark-app-ewg2d.ondigitalocean.app/api/lights/${deviceId}/state`, {
+		fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/api/lights/${deviceId}/state`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',

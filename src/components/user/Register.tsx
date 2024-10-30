@@ -41,7 +41,7 @@ function Register() {
 		const password = target.password.value;
 		const bridgeip = "*.*.*.*.*";
 		
-		fetch("https://shark-app-ewg2d.ondigitalocean.app/user/register", {
+		fetch("https://clownfish-app-2jcw3.ondigitalocean.app/user/register", {
 		method: "POST",
 		headers: {
 			"content-type": "application/json"

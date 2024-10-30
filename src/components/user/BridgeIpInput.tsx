@@ -17,7 +17,7 @@ function BridgeIpInput({userId } :UpdateBridgeIpProps){
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        fetch(`https://shark-app-ewg2d.ondigitalocean.app/user/bridgeip/${userId}`, {
+        fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/user/bridgeip/${userId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -19,7 +19,7 @@ function Aichat() {
 
 			setChatHistory((prev) => [...prev, { sender: 'user', message: inputValue }]);
 
-			fetch('https://shark-app-ewg2d.ondigitalocean.app/chat', {
+			fetch('https://clownfish-app-2jcw3.ondigitalocean.app/chat', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
