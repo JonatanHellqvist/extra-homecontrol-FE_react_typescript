@@ -6,7 +6,7 @@ import Devices from './components/Devices';
 import User from './components/User';
 import Chat from './components/Chat';
 
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { StompSessionProvider } from 'react-stomp-hooks';
 // import ChangeListener from './components/websockets/ChangeListener';
 // import HueComponent from './components/HueComponent';
@@ -14,14 +14,12 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 function App() {
   
   const NavigationButtons = () => {
-    const navigate = useNavigate(); // Använd useNavigate för att navigera
-  
     return (
       <div>
-        <button onClick={() => navigate('/start')}>Start</button>
-        <button onClick={() => navigate('/devices')}>Devices</button>
-        <button onClick={() => navigate('/user')}>User</button>
-        <button onClick={() => navigate('/chat')}>Chat</button>
+        <Link to="/start"><button>Start</button></Link>
+        <Link to="/devices"><button>Devices</button></Link>
+        <Link to="/user"><button>User</button></Link>
+        <Link to="/chat"><button>Chat</button></Link>
       </div>
     );
   };
