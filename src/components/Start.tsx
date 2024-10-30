@@ -1,4 +1,4 @@
-import HueComponent from "./HueComponent";
+
 
 function Start() {
 	return (

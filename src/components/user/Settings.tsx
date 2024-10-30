@@ -1,14 +1,13 @@
 import HueComponent from "../HueComponent";
 import LightSensInput from "../Sensordata/LightSensInput";
 import TempSensInput from "../Sensordata/TempSensInput";
-import BridgeIpInput from "./BridgeIpInput";
-import FindDevicesFromAuthUser from "./FindDevicesFromAuthUser";
+
 
 function Settings() {
-	const userString = localStorage.getItem("loggedInUser");
-	  const user = userString ? JSON.parse(userString) : null;
-	  const userId = user?.id;
-	  console.log(user.id);
+	// const userString = localStorage.getItem("loggedInUser");
+	//   const user = userString ? JSON.parse(userString) : null;
+	//   const userId = user?.id;
+	//   console.log(user.id);
 
 	return (
 		<div>

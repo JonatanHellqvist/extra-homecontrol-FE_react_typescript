@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Settings from "./user/Settings";
 import MyDevices from "./user/MyDevices";
-import FindDevices from "./user/FindDevices";
+
 import ArduinoSensorData from "./Sensordata/ArduinoSensorData";
 import Login from "./user/Login";
 import FindDevicesFromAuthUser from "./user/FindDevicesFromAuthUser";
