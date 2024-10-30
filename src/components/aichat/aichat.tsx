@@ -6,7 +6,9 @@ type ChatMessage = {
 };
 
 function Aichat() {
-	
+	// const apiURL = import.meta.env.REACT_APP_LOCAL_URL
+	const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
+
 	const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
 	const [inputValue, setInputValue] = useState<string>(''); 
 
@@ -19,7 +21,7 @@ function Aichat() {
 
 			setChatHistory((prev) => [...prev, { sender: 'user', message: inputValue }]);
 
-			fetch('https://clownfish-app-2jcw3.ondigitalocean.app/chat', {
+			fetch(`${apiURL}/chat`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'

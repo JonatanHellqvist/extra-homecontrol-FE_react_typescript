@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-function TempSensInput() {
-	const [selectedTemp, setSelectedTemp] = useState<number | null >(null);
-	const [selectedLightHueBridgeIndex, setSelectedLightHueBridgeIndex] = useState<number| null >(null);
+function TempSensInputAuth() {
+	const [selectedTemp, setSelectedTemp] = useState <number | null >(null);
+	const [selectedLightHueBridgeIndex, setSelectedLightHueBridgeIndex] = useState <string| null >(null);
 
 	// const apiURL = import.meta.env.REACT_APP_LOCAL_URL
 	const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
@@ -12,32 +12,27 @@ function TempSensInput() {
 	  const userId = user?.id;
 	  console.log(user.id);
 
-
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault(); 
 		
 		const formData = new FormData(e.currentTarget);
         const tempSensitivity = formData.get("temp") as number | null; 
-		const tempIndex = formData.get("index") as number | null; 
+		const tempIndex = "1595cd0c-68f7-4dfd-a55a-75a9de1f1c7c" as string | null;
 
         setSelectedTemp(tempSensitivity); 
 		setSelectedLightHueBridgeIndex(tempIndex); 
 
-		fetch(`${apiURL}/user/tempsens/${userId}`, {
-			            method: 'PUT',
-			            headers: {
-			                'Content-Type': 'application/json',
-			            },
-						body: JSON.stringify({
-							"tempSensitivity": tempSensitivity, 
-							"tempIndex": tempIndex,
-						})  
-			        })
-					.then(res => res.json())
-					.then(data => {
-						console.log(JSON.stringify(data));
-						
-					}) 	
+		fetch(`${apiURL}/user/tempsens/${userId}/${tempSensitivity}/${tempIndex}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			}, 
+		})
+		.then(res => res.json())
+		.then(data => {
+			console.log(JSON.stringify(data));
+			
+		}) 	
     };
 
 	return (
@@ -64,10 +59,10 @@ function TempSensInput() {
                 <button type="submit">Submit</button>
 				
                 {selectedTemp && <p>Selected temperature: {selectedTemp}°C</p>}
-				{selectedLightHueBridgeIndex && <p>Selected index: {selectedLightHueBridgeIndex}</p>}
+				{selectedLightHueBridgeIndex && <p>Selected RID: {selectedLightHueBridgeIndex}</p>}
 			</form>
 		</div>
 	);
 }
 
-export default TempSensInput;
+export default TempSensInputAuth;

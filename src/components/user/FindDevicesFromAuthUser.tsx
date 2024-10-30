@@ -21,11 +21,13 @@ interface FindDevicesProps {
 
 function FindDevicesFromAuthUser({ userId }: FindDevicesProps)  {
 	const [devices, setDevices] = useState<Device[]>([]);
-    
+
+    // const apiURL = import.meta.env.REACT_APP_LOCAL_URL
+	const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
 
     useEffect(() => {
         const fetchDevices = async () => {
-                fetch('https://clownfish-app-2jcw3.ondigitalocean.app/hue/devices')
+                fetch(`${apiURL}/hue/devices`)
 				.then(response => {
 					if (!response.ok) {
 						throw new Error('Network response was not ok');
@@ -100,7 +102,7 @@ function FindDevicesFromAuthUser({ userId }: FindDevicesProps)  {
 	const getDeviceInfo = async (deviceId:String) => {
 		console.log(deviceId);
 		
-		fetch (`https://clownfish-app-2jcw3.ondigitalocean.app/hue/device/${deviceId}`)
+		fetch (`${apiURL}/hue/device/${deviceId}`)
 		.then((response) => {
 			console.log(response)
 		})
@@ -111,7 +113,7 @@ function FindDevicesFromAuthUser({ userId }: FindDevicesProps)  {
 
 	const toggleDevice = async (deviceId:String, isOn: boolean) => {
 		console.log(`Toggling Device:  ${isOn ? "ON" : "OFF"}`);
-		fetch (`https://clownfish-app-2jcw3.ondigitalocean.app/hue/device/${deviceId}`, {
+		fetch (`${apiURL}/hue/device/${deviceId}`, {
 			method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

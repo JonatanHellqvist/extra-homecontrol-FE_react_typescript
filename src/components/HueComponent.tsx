@@ -4,10 +4,13 @@ const HueComponent: React.FC = () => {
 //   const [devices, setDevices] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
 
+//   const apiURL = import.meta.env.REACT_APP_LOCAL_URL
+const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
+
   // Hantera Hue-autentisering
   const handleHueAuth = () => {
 	const clientId = import.meta.env.VITE_HUE_CLIENT_ID;
-	const redirectUri = encodeURIComponent('https://starfish-app-a5j77.ondigitalocean.app'); //registerad URI på hue
+	const redirectUri = encodeURIComponent('http://localhost:5173/start'); //registerad URI på hue
 	const state = 'random_string';
   
 	const authUrl = `https://api.meethue.com/v2/oauth2/authorize?client_id=${clientId}&response_type=code&state=${state}&redirect_uri=${redirectUri}`;
@@ -20,7 +23,7 @@ const HueComponent: React.FC = () => {
 	const code = urlParams.get('code');
   
 	if (code) {
-	  fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/hue/callback?code=${code}`, {
+	  fetch(`${apiURL}/hue/callback?code=${code}`, {
 		method: 'GET',
 	  })
 	  .then(response => {

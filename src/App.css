@@ -54,3 +54,11 @@ li {
 #AuthDiv {
   border: 1px solid green;
 }
+
+#selectedTempDiv {
+  border: 3px solid green;
+}
+
+#selectedLightDiv {
+  border: 3px solid green;
+}

@@ -1,8 +1,10 @@
 import { StompSessionProvider } from "react-stomp-hooks";
 import ChangeListener from "../websockets/ChangeListener";
 import { useEffect, useState } from "react";
-import toggleDevice from "../toggledevice/toggleDevice";
+// import toggleDevice from "../toggledevice/toggleDevice";
 
+// const apiURL = import.meta.env.REACT_APP_LOCAL_URL
+const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
 
 interface LatestInputData {
 	celsius: number,
@@ -14,17 +16,32 @@ interface LatestInputData {
 function ArduinoSensorData() {
 	const [latestInput, setLatestInput] = useState<LatestInputData | null >(null); // State för att lagra den senaste avläsningen
 	const [tempSens, setTempSens] = useState<number | null >(null); 
-	const [tempSensIndex, setTempSensIndex] = useState<number | null >(null); 
+	const [tempSensIndex, setTempSensIndex] = useState<String | null >(null); 
 	const [lightSens, setLightSens] = useState<number | null >(null); 
-	const [lightSensIndex, setLightSensIndex] = useState<number | null >(null); 
+	const [lightSensIndex, setLightSensIndex] = useState<String | null >(null); 
 
 	const userString = localStorage.getItem("loggedInUser");
 	  const user = userString ? JSON.parse(userString) : null;
 	  const userId = user?.id;
 	  console.log(user.id);
 
+	  const toggleDevice = async (deviceId:String, isOn: boolean) => {
+		console.log(`Toggling Device:  ${isOn ? "ON" : "OFF"}`);
+		fetch (`${apiURL}/hue/device/${deviceId}`, {
+			method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(isOn),
+		})
+		.then((response) => response.text())
+		.then(data => {
+			console.log("Response: ", data);	
+		})		
+	};
+
 	useEffect (() => {
-		fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/get-latest-dht11-sensor-data`)
+		fetch(`${apiURL}/get-latest-dht11-sensor-data`)
 		.then(response => response.json())
 		.then(data => {
 			setLatestInput(data);			
@@ -33,36 +50,37 @@ function ArduinoSensorData() {
 
 	}, []);
 
-	useEffect (() => {
-		fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/user/tempsens/${userId}`)
-		.then(response => response.json())
-		.then(data => {
-					
-            setTempSens(data.tempSensitivity);
-			setTempSensIndex(data.tempIndex);
-			
-			
-			console.log("tempsensdata: ", data);
-	});
+	
+	useEffect(() => {
+		fetch(`${apiURL}/user/tempsens/${userId}`)
+			.then(response => response.json())
+			.then(data => {
+				console.log("tempSettings", data);
+				setTempSens(data.tempSensitivity);
+				setTempSensIndex(data.tempIndex);
+			})
+			.catch(error => console.error("Fetch error:", error));
 	}, []);
-	console.log("TempS: ", tempSens, " TempI: ", tempSensIndex);
-	useEffect (() => {
-		fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/user/lightsens/${userId}`)
-		.then(response => response.json())
-		.then(data => {
-					
-			setLightSens(data.lightSensitivity);
-			setLightSensIndex(data.lightIndex);
 
-			console.log("lightsensdata: ", data);
-	});
-	}, []);
-	console.log("LightS: ", lightSens, " LightI: ", lightSensIndex);
+	console.log("TempS: ", tempSens, " TempI: ", tempSensIndex);
+
+	
+	useEffect(() => {
+		fetch(`${apiURL}/user/lightsens/${userId}`)
+			.then(response => response.json())	
+			.then(data => {
+				console.log("lightsettings: ", data);
+				setLightSens(data.lightSensitivity);
+				setLightSensIndex(data.lightIndex);
+			})
+			.catch(error => console.error("Fetch error:", error)); // Add error handling
+		}, []);
+		console.log("LightS: ", lightSens, " LightI: ", lightSensIndex);
 	//körs varje gång databasen uppdateras och latestInput ändras
 	//TODO ändra vilken temperatur fläkten ska gå igång och vilken index den har
 	useEffect(() => {
 		if(latestInput && tempSens && tempSensIndex) {
-			if(latestInput.celsius > tempSens
+			if(latestInput.celsius < tempSens
 			) {
 				toggleDevice(tempSensIndex,true);
 				console.log("TS", tempSens);
@@ -109,7 +127,7 @@ return (
         )}
 
         {/* StompSessionProvider och ChangeListener för WebSocket */}
-        <StompSessionProvider url={"https://clownfish-app-2jcw3.ondigitalocean.app/websocket"}>
+        <StompSessionProvider url={`${apiURL}/websocket`}>
             <ChangeListener onDataReceived={updateLatestInput} />
         </StompSessionProvider>
     </div>
