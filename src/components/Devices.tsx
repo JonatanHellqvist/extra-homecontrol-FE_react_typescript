@@ -1,7 +1,7 @@
-import { StompSessionProvider } from "react-stomp-hooks";
+
 import HueDeviceList from "./HueDeviceList";
 // import Dht11 from "./Sensordata/Dht11";
-import ChangeListener from "./websockets/ChangeListener";
+
 
 function Devices() {
 	return (

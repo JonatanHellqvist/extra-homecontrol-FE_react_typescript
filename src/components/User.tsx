@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
-
-import PrintBridgeIp from "./user/PrintBridgeIp";
+import { useState } from "react";
 
 import Settings from "./user/Settings";
 import MyDevices from "./user/MyDevices";
-import FindDevices from "./user/FindDevices";
+
 import ArduinoSensorData from "./Sensordata/ArduinoSensorData";
 import Login from "./user/Login";
+import FindDevicesFromAuthUser from "./user/FindDevicesFromAuthUser";
 // import Register from "./user/register";
 
 
@@ -39,7 +38,8 @@ function User() {
 			"mydevices":
 			<MyDevices userId={userId}/>,
 			"finddevices": 
-			<FindDevices userId={userId}/>,
+			// <FindDevices userId={userId}/>,
+			<FindDevicesFromAuthUser userId={userId}/>,
 			"settings": 
 			<Settings />,
 			"arduinosensordata":

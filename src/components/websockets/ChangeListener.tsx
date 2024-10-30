@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSubscription } from 'react-stomp-hooks';
-import showLatestsensorInput from '../printdata/showLatestsensorInput';
-import toggleDevice from '../toggledevice/toggleDevice';
+
 
 interface LatestInputData {
 	timeStamp: string,
@@ -22,7 +21,9 @@ const ChangeListener: React.FC<ChangeListenerProps> = ({ onDataReceived }) => {
 	useSubscription('/topic/changes', (message) => {
 		const changeData: LatestInputData = JSON.parse(message.body);
 		setLatestInput(changeData);
-		onDataReceived(changeData); 
+		onDataReceived(changeData);
+		console.log(latestInput);
+		
 		console.log(changeData);
 		
 	});

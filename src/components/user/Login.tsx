@@ -29,7 +29,7 @@ function Login() {
 	const handleLogin = async (e:React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const res = await fetch ("http://localhost:8080/user/login", {
+		const res = await fetch ("https://clownfish-app-2jcw3.ondigitalocean.app/user/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"

@@ -1,75 +1,49 @@
-import { useEffect, useState } from 'react'
+
 import './App.css'
-// import HueDeviceList from './components/HueDeviceList'
+
 import Start from './components/Start';
 import Devices from './components/Devices';
 import User from './components/User';
 import Chat from './components/Chat';
-import { StompSessionProvider } from 'react-stomp-hooks';
-import ChangeListener from './components/websockets/ChangeListener';
+
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import HueComponent from './components/HueComponent';
+// import { StompSessionProvider } from 'react-stomp-hooks';
+// import ChangeListener from './components/websockets/ChangeListener';
+// import HueComponent from './components/HueComponent';
 
 function App() {
   
-  const [admin, setAdmin] = useState<boolean>(false);
-  const [page, setPage] = useState<string>("");
-
-  useEffect(() => {
-    setAdmin(false);
-  }, [])
-
-  useEffect(() => {
-
-    let pageUrl = page;
-
-      if (!pageUrl) {
-      
-        const queryParams = new URLSearchParams(window.location.search);
-        const getUrl = queryParams.get("page");
-    
-        if (getUrl) {
-          pageUrl = getUrl;
-          setPage(getUrl);
-        } else {
-          pageUrl = "start";
-      } 
-    } 
-
-    window.history.pushState(
-      null,
-      "",
-      "?page=" + pageUrl
-    )
-  }, [page])
+  const NavigationButtons = () => {
+    return (
+      <div>
+        <Link to="/start"><button>Start</button></Link>
+        <Link to="/devices"><button>Devices</button></Link>
+        <Link to="/user"><button>User</button></Link>
+        <Link to="/chat"><button>Chat</button></Link>
+      </div>
+    );
+  };
 
   return (
-    <>
-    
-    
-    <h1>Home Controller</h1>
-    <button onClick={() => setPage("start")}>Start</button>
-    <button onClick={() => setPage("devices")}>Devices</button>
-    <button onClick={() => setPage("user")}>User</button>
-    <button onClick={() => setPage("chat")}>Chat</button>
-    {/* <StompSessionProvider url={"http://localhost:8080/websocket"} >
-    <ChangeListener/>
-    </StompSessionProvider> */}
-    {/* loginform / registerform /logoutform*/}
-    {admin ? <button>Admin</button> : null}
-
-    {/* <div>Page : {page}</div> */}
-     {/* <HueDeviceList /> */}
-    {
-      {
-        "start":<Start />,
-        "devices":<Devices />,
-        "user":<User />,
-        "chat": <Chat />
-      } [page]
-    }
-
-
+      <>
+    <Router>
+    <div>
+      <h1>Home Controller</h1>
+      <NavigationButtons/>
+      <Routes>
+        <Route path="/start" element={<Start />} />
+        <Route path="/devices" element={<Devices />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/chat" element={<Chat />} />
+      </Routes>
+      </div>
+    </Router>
+    <div>
+    <HueComponent/>
+    </div>
     </>
-  )
+  );
 }
 
 export default App

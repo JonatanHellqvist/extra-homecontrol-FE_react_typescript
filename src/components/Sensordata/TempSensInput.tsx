@@ -18,7 +18,7 @@ function TempSensInput() {
         setSelectedTemp(tempSensitivity); 
 		setSelectedLightHueBridgeIndex(tempIndex); 
 
-		fetch(`http://localhost:8080/user/tempsens/${userId}`, {
+		fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/user/tempsens/${userId}`, {
 			            method: 'PUT',
 			            headers: {
 			                'Content-Type': 'application/json',

@@ -50,3 +50,7 @@ li {
   margin-top: 5px;
   border: 1px solid blue;
 }
+
+#AuthDiv {
+  border: 1px solid green;
+}

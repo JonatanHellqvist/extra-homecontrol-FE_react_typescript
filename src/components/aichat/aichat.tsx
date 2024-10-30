@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 
 type ChatMessage = {
 	sender: 'user' | 'system';
@@ -19,7 +19,7 @@ function Aichat() {
 
 			setChatHistory((prev) => [...prev, { sender: 'user', message: inputValue }]);
 
-			fetch('http://localhost:8080/chat', {
+			fetch('https://clownfish-app-2jcw3.ondigitalocean.app/chat', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
