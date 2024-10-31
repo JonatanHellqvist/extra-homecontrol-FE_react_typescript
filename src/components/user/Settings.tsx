@@ -1,8 +1,8 @@
 // import HueComponent from "../HueComponent";
 import AutoToggleFanComponent from "../auth/AutoToggleFanComponent";
 import AutoToggleLightComponent from "../auth/AutoToggleLightComponent";
-import LightSensInput from "../Sensordata/LightSensInput";
-import TempSensInput from "../Sensordata/TempSensInput";
+// import LightSensInput from "../Sensordata/LightSensInput";
+// import TempSensInput from "../Sensordata/TempSensInput";
 
 
 function Settings() {
