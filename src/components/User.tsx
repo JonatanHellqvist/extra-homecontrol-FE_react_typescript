@@ -23,7 +23,7 @@ function User() {
 	
 	  return (
 		<>
-			<Login/>
+			
 		<div>
 			{/* TODO om inloggad user annas dölj */}
 		  <button onClick={() => setSubPage("mydevices")}>My Devices</button>
@@ -47,6 +47,7 @@ function User() {
 
 		}	[subPage]
 	} 
+	<Login/>
 	</>
 
 	);

@@ -2,7 +2,7 @@
 import './App.css'
 
 import Start from './components/Start';
-import Devices from './components/Devices';
+// import Devices from './components/Devices';
 import User from './components/User';
 import Chat from './components/Chat';
 
@@ -18,7 +18,7 @@ function App() {
     return (
       <div>
         <Link to="/start"><button>Start</button></Link>
-        <Link to="/devices"><button>Devices</button></Link>
+        {/* <Link to="/devices"><button>Devices</button></Link> */}
         <Link to="/user"><button>User</button></Link>
         <Link to="/chat"><button>Chat</button></Link>
       </div>
@@ -33,7 +33,7 @@ function App() {
       <NavigationButtons/>
       <Routes>
         <Route path="/start" element={<Start />} />
-        <Route path="/devices" element={<Devices />} />
+        {/* <Route path="/devices" element={<Devices />} /> */}
         <Route path="/user" element={<User />} />
         <Route path="/chat" element={<Chat />} />
       </Routes>
