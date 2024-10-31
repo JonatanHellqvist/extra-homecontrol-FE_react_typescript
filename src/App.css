@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #525353;
 }
 #main {
  
@@ -146,10 +147,10 @@ li {
 }
 
 #settingsAutoLightDiv {
-  background-color: rgb(90, 88, 88);
+  background-color: rgb(61, 60, 60);
 }
 #settingsAutoFanDiv{
-  background-color: rgb(90, 88, 88);
+  background-color: rgb(61, 60, 60);
 }
 #settingsAutoFanDiv h3,h2, #settingsAutoLightDiv h3,h2 {
   background-color: rgb(0, 0, 0);
@@ -160,13 +161,13 @@ li {
 }
 #settingsInformationDiv {
 border: 1px solid rgb(0, 0, 0);
-background-color: rgb(90, 88, 88);
+background-color: rgb(61, 60, 60);
 /* margin: 0;
 padding: 10px; */
 }
 #settingsInformationTextDiv {
  /* padding: 10px; */
- background-color: rgb(90, 88, 88);
+ background-color: rgb(61, 60, 60);
 }
 #settingsInformationTextDiv p{
   padding: 10px;
@@ -228,6 +229,7 @@ padding: 0;
   padding: 0;
 }
 #deviceUlAuthLi {
+  margin-top: 5px;
   background-color: rgb(90, 88, 88);
 }
 #deviceUlAuthLiBtns {
@@ -249,7 +251,7 @@ width: 100%;
  background-color: black;
 }
 #arduinoSensorDataLatestInput {
-  background-color: rgb(90, 88, 88);
+  background-color: rgb(61, 60, 60);
   padding: 10px;
 }
 #arduinoSensorDataTitleDiv {
@@ -282,7 +284,7 @@ font-size: 35px;
 
 #autoSettings h4 {
   padding: 10px;
-  background-color: rgb(90, 88, 88);
+  background-color: rgb(61, 60, 60);
 }
 
 #settingsDiv{
@@ -321,5 +323,8 @@ margin: 10px auto;
   
   padding: 5px;
   width: 100%;
+}
+#myDevices {
+  background-color: rgb(61, 60, 60);
 }
 
