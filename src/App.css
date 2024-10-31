@@ -1,15 +1,22 @@
 #root {
   max-width: 1280px;
+  height: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: #525353;
-}
-#main {
- 
+  /* background-color: #3e5757; */
+  background-color: black;
   
 }
+/* #main {
+ 
+  
+} */
+/* #body {
+  background-color: black;
+} */
 body {
+   /* background-color: black; */
   background-color: #525353;
 }
 li {
@@ -71,7 +78,7 @@ li {
   width: 100%;
 }
 #AuthDiv {
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 #selectedTempDiv {
@@ -317,7 +324,7 @@ margin: 10px auto;
   width: 100%;
 }
 #loggedInDiv {
-  border: 1px solid green;
+  border: 3px solid green;
   padding: 5px;
   
 }
@@ -329,5 +336,21 @@ margin: 10px auto;
 }
 #myDevices {
   background-color: rgb(61, 60, 60);
+}
+#authenticate {
+  background-color: rgb(61, 60, 60);
+}
+#authenticate h1 {
+  font-size: 35px;
+  padding: 20px;
+}
+#AuthDiv {
+  background-color: black;
+}
+#AuthDiv h1 {
+  margin: 0;
+}
+#AuthDiv button {
+  width: 100%;
 }
 

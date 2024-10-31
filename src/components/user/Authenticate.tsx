@@ -3,7 +3,7 @@ import HueComponent from "../HueComponent";
 
 function Authenticate() {
 	return (
-		<div>
+		<div id="authenticate">
 			<HueComponent/>
 		</div>
 	);

@@ -23,7 +23,7 @@ function App() {
         {/* <Link to="/devices"><button>Devices</button></Link> */} 
 
         <Link to="/user"><button>User</button></Link>
-        <Link to="/chat"><button>Help</button></Link>
+        <Link to="/chat"><button>Fråga HusTomten</button></Link>
       </div>
     );
   };

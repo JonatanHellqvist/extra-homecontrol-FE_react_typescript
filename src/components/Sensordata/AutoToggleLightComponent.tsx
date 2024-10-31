@@ -1,13 +1,16 @@
 import { useEffect, useState} from 'react';
 import LightSensInputAuth from './LightSensInputAuth';
+import { getLoggedInUser } from '../user/getLoggedInUser';
 
 // const apiURL = import.meta.env.REACT_APP_LOCAL_URL
 const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
 
-const userString = localStorage.getItem("loggedInUser");
-	  const user = userString ? JSON.parse(userString) : null;
-	  const userId = user?.id;
-	  console.log(user.id);
+// const userString = localStorage.getItem("loggedInUser");
+// 	  const user = userString ? JSON.parse(userString) : null;
+// 	  const userId = user?.id;
+// 	  console.log(user.id);
+const user = getLoggedInUser();
+const userId = user?.id;
 
 function AutoToggleFanComponent() {
 	const [selectedLight, setSelectedLight] = useState <number | null >(null);
