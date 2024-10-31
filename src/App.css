@@ -1,8 +1,23 @@
 #root {
   max-width: 1280px;
+  height: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  /* background-color: #3e5757; */
+  background-color: black;
+  
+}
+/* #main {
+ 
+  
+} */
+/* #body {
+  background-color: black;
+} */
+body {
+   /* background-color: black; */
+  background-color: #525353;
 }
 li {
   list-style: none;
@@ -44,13 +59,298 @@ li {
 }
 
 #selectTempForm {
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  /* centrera */
+}
+#selectTempFormButton {
+  margin-top: 5px;
+  border-radius: 3px;
+  width: 100%;
 }
 #selectLightForm {
+  /* margin-top: 5px; */
+  /* border: 1px solid blue; */
+  /* centrera */
+}
+#selectLightFormButton {
   margin-top: 5px;
-  border: 1px solid blue;
+  border-radius: 3px;
+  width: 100%;
+}
+#AuthDiv {
+  /* border: 1px solid green; */
 }
 
-#AuthDiv {
-  border: 1px solid green;
+#selectedTempDiv {
+  /* border: 3px solid green; */
 }
+
+#selectedLightDiv {
+  /* border: 3px solid green; */
+}
+
+#aiChatDiv {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  min-width: 100%;
+  max-width: 70%;
+
+  margin: 0 auto; 
+}
+#aiChatH1 {
+  background-color: rgb(228, 227, 227);
+  margin-top: 0;
+  margin-bottom: 0;
+  /* border: 1px solid black; */
+  /* background-color: green; */
+  border-bottom: 2px solid  black;
+  
+}
+#aiChatUl {
+  border-bottom: 1px solid black;
+  min-height: 200px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  /* border: 1px solid red; */
+  padding: 0;
+  margin:0;
+  
+  
+}
+#aiChatLi {
+  /* border: 1px solid green; */
+  margin: 10px;           
+  width: 95%;                   
+  text-align: center;           
+}
+  
+
+#aiChatInputDiv {
+  
+  border: 1px solid black; 
+  background-color: white;
+  display: flex;               /* Använd flexbox */
+  align-items: center;         /* Centrera vertikalt */
+  justify-content: space-between; /* Fördela utrymmet */
+  padding: 3px;  
+              
+}
+#aiChatInputButton {
+ width: 20%;
+ border-radius: 3px;
+
+}
+#aiChatInput {
+  
+  color: black;
+  font-weight: bold;
+  background-color: rgb(228, 227, 227);
+  margin: 0px;
+  padding: 0px;
+  width: 79%;
+  height: 35px;
+  text-align: bottom;
+}
+
+#settingsAutoLightDiv {
+  background-color: rgb(61, 60, 60);
+}
+#settingsAutoFanDiv{
+  background-color: rgb(61, 60, 60);
+}
+#settingsAutoFanDiv h3,h2, #settingsAutoLightDiv h3,h2 {
+  background-color: rgb(0, 0, 0);
+}
+#settingsAutoFanDiv h2, #settingsAutoLightDiv h2 {
+  margin: 0;
+  text-decoration: underline;
+}
+#settingsInformationDiv {
+border: 1px solid rgb(0, 0, 0);
+background-color: rgb(61, 60, 60);
+/* margin: 0;
+padding: 10px; */
+}
+#settingsInformationTextDiv {
+ /* padding: 10px; */
+ background-color: rgb(61, 60, 60);
+}
+#settingsInformationTextDiv p{
+  padding: 10px;
+}
+#settingsInformationTextDiv p, h3{
+  /* border: 1px solid red; */
+  margin: 0;
+  padding-top: 0px;
+  }
+  #settingsInformationDiv h1 {
+    margin: 0;
+    padding: 0;
+  }
+  #settingsH1Div {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+  }
+#settingsDiv{
+  width: 60%;
+  max-width: 60%;
+  margin: 10px auto;
+}
+#settingsH1 {
+  background-color: black;
+  margin-top: 0;
+  padding:0;
+  margin-bottom: 0;
+  /* padding-bottom: 25px; */
+  padding: 10px;
+  font-size: 35px;
+  /* text-decoration: underline; */
+}
+
+#selectedTempDiv h3,h4,p{
+margin: 0;
+padding: 0;  
+}
+#selectedLightDiv h3,h4,p{
+  margin:0;
+  padding:0;
+}
+
+
+
+
+#deviceUlAuthDiv {
+  background-color: #525353;
+}
+#deviceUlAuthDiv h2 {
+  margin: 0;
+  padding: 10px;
+}
+#deviceUlAuth {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#deviceUlAuthLi {
+  margin-top: 5px;
+  background-color: rgb(90, 88, 88);
+}
+#deviceUlAuthLiBtns {
+display:flex;
+border: 2px solid rgb(37, 37, 37);
+border-bottom: 3px solid black;
+background-color: rgb(61, 60, 60);
+}
+#deviceUlAuthLiBtns button {
+margin: 5px;
+border-radius: 2px;
+width: 100%;
+}
+#deviceUlAuthLiName {
+  font-size: 25px;
+}
+
+#arduinoSensorDataDiv {
+ background-color: black;
+}
+#arduinoSensorDataLatestInput {
+  background-color: rgb(61, 60, 60);
+  padding: 10px;
+}
+#arduinoSensorDataTitleDiv {
+/* padding: 25px; */
+}
+#arduinoSensorDataTitle {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+#arduinoSensorDataTitleH1 {
+  background-color: black;
+margin-top: 0;
+margin: 0;
+padding:10px;
+margin-bottom: 0;
+
+font-size: 35px;
+
+}
+#autoSettings {
+  /* border: 1px solid red; */
+}
+#autoSettings h2,h3{
+  margin: 0;
+  background-color: black;
+}
+
+#autoSettings h4 {
+  padding: 10px;
+  background-color: rgb(61, 60, 60);
+}
+
+#settingsDiv{
+width: 60%;
+max-width: 60%;
+margin: 10px auto;
+}
+
+#loggedInDiv {
+  background-color: black;
+}
+#loggedInUserH1 {
+  background-color: black;
+  padding: 10px;
+  margin: 0;
+  font-size: 35px;
+}
+#loggedInUserH1 button {
+  margin-top: 15px;
+  padding-top: 15px;
+}
+#loginFormBtnsDiv {
+  display: flex;
+  background-color: red;
+}
+#loginFormBtnsDiv button {
+  width: 100%;
+}
+#loggedInDiv {
+  border: 3px solid green;
+  padding: 5px;
+  
+}
+#loggedInDiv button {
+  border-radius: 3px;
+  
+  padding: 5px;
+  width: 100%;
+}
+#myDevices {
+  background-color: rgb(61, 60, 60);
+}
+#authenticate {
+  background-color: rgb(61, 60, 60);
+}
+#authenticate h1 {
+  font-size: 35px;
+  padding: 20px;
+}
+#AuthDiv {
+  background-color: black;
+}
+#AuthDiv h1 {
+  margin: 0;
+}
+#AuthDiv button {
+  width: 100%;
+}
+
