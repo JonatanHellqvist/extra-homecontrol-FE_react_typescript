@@ -45,13 +45,13 @@ function App() {
         {/* Lokalt ip */}
         {/* <Route path="/devices" element={<Devices />} /> */}
         
-        <Route path="/user" element={<User />} />
+        <Route path="/user*" element={<User />} />
         <Route path="/chat" element={<Chat />} />
       </Routes>
      
     </Router>
     <div>
-    <HueComponent/>
+    {/* <HueComponent/> */}
     </div>
     </>
   );
