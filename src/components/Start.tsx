@@ -2,7 +2,7 @@
 
 function Start() {
 	return (
-		<div>
+		<div id="startDiv">
 			<h3>Start</h3>
 			
 		</div>

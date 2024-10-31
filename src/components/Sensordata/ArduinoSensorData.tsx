@@ -18,12 +18,31 @@ function ArduinoSensorData() {
 	const [lightSens, setLightSens] = useState<number | null >(null); 
 	const [lightSensIndex, setLightSensIndex] = useState<String | null >(null); 
 
+	//test
+	// const [isFanOn, setIsFanOn] = useState<boolean | null>(null);
+	// const [isLightOn, setIsLightOn] = useState<boolean | null>(null);
+
 	const userString = localStorage.getItem("loggedInUser");
 	  const user = userString ? JSON.parse(userString) : null;
 	  const userId = user?.id;
 	  console.log(user.id);
 
-	  const toggleDevice = async (deviceId:String, isOn: boolean) => {
+	//   const toggleDevice = async (deviceId:String, isOn: boolean) => {
+	// 	console.log(`Toggling Device:  ${isOn ? "ON" : "OFF"}`);
+	// 	fetch (`https://clownfish-app-2jcw3.ondigitalocean.app/hue/device/${deviceId}`, {
+	// 		method: 'PUT',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(isOn),
+	// 	})
+	// 	.then((response) => response.text())
+	// 	.then(data => {
+	// 		console.log("Response: ", data);	
+	// 	})		
+	// };
+	  const toggleDeviceOn = async (deviceId:String) => {
+		const isOn : boolean = true;
 		console.log(`Toggling Device:  ${isOn ? "ON" : "OFF"}`);
 		fetch (`https://clownfish-app-2jcw3.ondigitalocean.app/hue/device/${deviceId}`, {
 			method: 'PUT',
@@ -37,6 +56,35 @@ function ArduinoSensorData() {
 			console.log("Response: ", data);	
 		})		
 	};
+	const toggleDeviceOff = async (deviceId:String) => {
+		const isOn : boolean = false;
+		console.log(`Toggling Device:  ${isOn ? "ON" : "OFF"}`);
+		fetch (`https://clownfish-app-2jcw3.ondigitalocean.app/hue/device/${deviceId}`, {
+			method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(isOn),
+		})
+		.then((response) => response.text())
+		.then(data => {
+			console.log("Response: ", data);	
+		})		
+	};
+	// const toggleDevice = async (deviceId:String, isOn: boolean) => {
+	// 	console.log(`Toggling Device:  ${isOn ? "ON" : "OFF"}`);
+	// 	fetch (`https://clownfish-app-2jcw3.ondigitalocean.app/hue/device/${deviceId}`, {
+	// 		method: 'PUT',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(isOn),
+	// 	})
+	// 	.then((response) => response.text())
+	// 	.then(data => {
+	// 		console.log("Response: ", data);	
+	// 	})		
+	// };
 
 	useEffect (() => {
 		fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/get-latest-dht11-sensor-data`)
@@ -76,13 +124,13 @@ function ArduinoSensorData() {
 	//TODO ändra vilken temperatur fläkten ska gå igång och vilken index den har
 	useEffect(() => {
 		if(latestInput && tempSens && tempSensIndex) {
-			if(latestInput.celsius < tempSens
+			if(latestInput.celsius > tempSens
 			) {
-				toggleDevice(tempSensIndex,true);
+				toggleDeviceOn(tempSensIndex);
 				console.log("TS", tempSens);
 				
 			} else {
-				toggleDevice(tempSensIndex,false);
+				toggleDeviceOff(tempSensIndex);
 			}
 		}
 	},[latestInput]);
@@ -92,12 +140,16 @@ function ArduinoSensorData() {
 	useEffect(() => {
 		if(latestInput && lightSens && lightSensIndex) {
             if(latestInput.photoTransistorValue > lightSens) {
-                toggleDevice(lightSensIndex,true);
+                toggleDeviceOn(lightSensIndex);
             } else  {
-                toggleDevice(lightSensIndex,false);
+                toggleDeviceOff(lightSensIndex);
             }
         }
 	}, [latestInput]);
+	
+
+	//test
+	
 
 	const updateLatestInput = (newData: LatestInputData) => {
 		setLatestInput(newData);

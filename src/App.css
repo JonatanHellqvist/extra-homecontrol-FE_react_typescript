@@ -17,7 +17,7 @@
 } */
 body {
    /* background-color: black; */
-  background-color: #525353;
+   background-color: black;
 }
 li {
   list-style: none;
@@ -79,6 +79,9 @@ li {
 }
 #AuthDiv {
   /* border: 1px solid green; */
+  font-size: 10px;
+  width: 100%;
+  min-width: 100%;
 }
 
 #selectedTempDiv {
@@ -190,6 +193,9 @@ padding: 10px; */
   #settingsInformationDiv h1 {
     margin: 0;
     padding: 0;
+    width: 60%;
+  max-width: 60%;
+  margin: 10px auto;
   }
   #settingsH1Div {
     margin: 0;
@@ -197,11 +203,14 @@ padding: 10px; */
     text-align: center;
     align-items: center;
     align-content: center;
+    width: 60%;
+  max-width: 60%;
+  margin: 10px auto;
   }
 #settingsDiv{
   width: 60%;
   max-width: 60%;
-  margin: 10px auto;
+  /* margin: 0px auto; */
 }
 #settingsH1 {
   background-color: black;
@@ -212,6 +221,9 @@ padding: 10px; */
   padding: 10px;
   font-size: 35px;
   /* text-decoration: underline; */
+   width: 60%;
+  max-width: 60%;
+  margin: 10px auto;
 }
 
 #selectedTempDiv h3,h4,p{
@@ -305,6 +317,8 @@ margin: 10px auto;
 
 #loggedInDiv {
   background-color: black;
+  max-width: 60%;
+  margin: 10px auto;
 }
 #loggedInUserH1 {
   background-color: black;
@@ -324,7 +338,7 @@ margin: 10px auto;
   width: 100%;
 }
 #loggedInDiv {
-  border: 3px solid green;
+  /* border: 3px solid green; */
   padding: 5px;
   
 }
@@ -346,11 +360,19 @@ margin: 10px auto;
 }
 #AuthDiv {
   background-color: black;
+  max-width: 60%;
+  margin: 10px auto;
 }
 #AuthDiv h1 {
   margin: 0;
 }
 #AuthDiv button {
   width: 100%;
+  max-width: 60%;
+  border-radius: 2px;
 }
+
+/* body {
+  border: 1px solid red;
+} */
 

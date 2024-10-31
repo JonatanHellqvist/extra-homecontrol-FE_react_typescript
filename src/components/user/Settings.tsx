@@ -39,10 +39,7 @@ function Settings() {
 				{/* <LightSensInputAuth />  */}
 				<AutoToggleLightComponent/>
 			</div>
-			<div>
-			{/* <HueComponent/> */}
-			{/* <FindDevicesFromAuthUser userId= {userId}/> */}
-			</div>
+			
 		</div>
 	);
 }
