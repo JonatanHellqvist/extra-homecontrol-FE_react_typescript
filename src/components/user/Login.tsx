@@ -43,7 +43,7 @@ function Login() {
 				setLoggedInUser(data.user)
 				localStorage.setItem("loggedInUser", JSON.stringify(data));
 				console.log("Login successfull for User:", (data));	
-				window.location.href = ("?page=user"); //ladda om usersidan
+				window.location.href = ("https://starfish-app-a5j77.ondigitalocean.app/user"); //ladda om usersidan
 			}		
 		} else if (res.status === 401){
 			console.log("Invalid username or password")
