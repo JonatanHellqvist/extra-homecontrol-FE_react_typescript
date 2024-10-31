@@ -5,7 +5,7 @@ function LightSensInputAuth() {
 	const [selectedLightHueBridgeIndex, setSelectedLightHueBridgeIndex] = useState <string | null >(null);
 
 	// const apiURL = import.meta.env.REACT_APP_LOCAL_URL
-	const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
+	// const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
 
 	const userString = localStorage.getItem("loggedInUser");
 	  const user = userString ? JSON.parse(userString) : null;
@@ -22,7 +22,7 @@ function LightSensInputAuth() {
         setSelectedLight(lightSensitivity); 
 		setSelectedLightHueBridgeIndex(lightIndex);
 
-	fetch(`${apiURL}/user/lightsens/${userId}/${lightSensitivity}/${lightIndex}`, {
+	fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/user/lightsens/${userId}/${lightSensitivity}/${lightIndex}`, {
 		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json',

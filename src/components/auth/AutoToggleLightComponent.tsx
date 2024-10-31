@@ -4,7 +4,7 @@ import { getLoggedInUser } from '../user/getLoggedInUser';
 
 
 // const apiURL = import.meta.env.REACT_APP_LOCAL_URL
-const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
+// const apiURL = import.meta.env.VITE_LOCAL_URL; //lokalt
 
 // const userString = localStorage.getItem("loggedInUser");
 // 	  const user = userString ? JSON.parse(userString) : null;
@@ -24,7 +24,7 @@ function AutoToggleLightComponent() {
             return; // Exit early if userId is not set
         }
 
-        fetch(`${apiURL}/user/lightsens/${userId}`)
+        fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/user/lightsens/${userId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
