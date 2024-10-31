@@ -30,9 +30,14 @@ function App() {
 
   return (
       <>
+        <div id = "header">
+      <h1 id="mainH1header">Home Controller</h1>
+
+        </div>
     <Router>
-    <div id="main">
-      <h1>Home Controller</h1>
+      
+
+      
       <NavigationButtons/>
       <Routes>
         <Route path="/start" element={<Start />} />
@@ -43,7 +48,7 @@ function App() {
         <Route path="/user" element={<User />} />
         <Route path="/chat" element={<Chat />} />
       </Routes>
-      </div>
+     
     </Router>
     <div>
     <HueComponent/>

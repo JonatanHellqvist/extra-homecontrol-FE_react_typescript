@@ -6,6 +6,7 @@ import MyDevices from "./user/MyDevices";
 import ArduinoSensorData from "./Sensordata/ArduinoSensorData";
 import Login from "./user/Login";
 import FindDevicesFromAuthUser from "./user/FindDevicesFromAuthUser";
+import HueComponent from "./HueComponent";
 // import Register from "./user/register";
 
 
@@ -30,6 +31,7 @@ function User() {
 		  <button onClick={() => setSubPage("finddevices")}>Find Devices</button>
 		  <button onClick={() => setSubPage("settings")}>Settings</button>
 		  <button onClick={() => setSubPage("arduinosensordata")}>Sensor Data</button>
+		  <button onClick={() => setSubPage("authenticate")}>Authenticate</button>
 		</div>
 		
 		  
@@ -43,12 +45,15 @@ function User() {
 			"settings": 
 			<Settings />,
 			"arduinosensordata":
-			<ArduinoSensorData/>
+			<ArduinoSensorData/>,
+			"authenticate":
+			<HueComponent/>
 
 		}	[subPage]
 	} 
 	<div>
 		<h3>Welcome to Home Controller</h3>
+		
 	<Login/>
 	</div>
 	</>

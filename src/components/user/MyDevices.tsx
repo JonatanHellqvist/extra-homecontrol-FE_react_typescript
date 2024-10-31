@@ -124,7 +124,7 @@ const toggleLight = (lightId: number, isOn:boolean) => {
 };
 	
 	return (
-		<div>
+		<div id="myDevices">
 			<h2>Your Devices</h2>
             <ul>
                 {devices.map(device => (
