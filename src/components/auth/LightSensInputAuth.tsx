@@ -37,8 +37,7 @@ function LightSensInputAuth() {
 	console.log("SelectedLight: ", lightSensitivity, "SelectedLiughthuiebruirji: ",lightIndex);
 	
 };
-	//TODO spara till user
-
+	
 	return (
 		<div id="selectLightForm">
 			<form onSubmit={handleSubmit}>

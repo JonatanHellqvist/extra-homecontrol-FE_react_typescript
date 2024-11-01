@@ -11,7 +11,7 @@ interface LatestInputData {
 }
 
 interface ChangeListenerProps {
-    onDataReceived: (data: LatestInputData) => void; // Funktion för att skicka data tillbaka
+    onDataReceived: (data: LatestInputData) => void; 
 }
 
 const ChangeListener: React.FC<ChangeListenerProps> = ({ onDataReceived }) => {
@@ -22,38 +22,10 @@ const ChangeListener: React.FC<ChangeListenerProps> = ({ onDataReceived }) => {
 		const changeData: LatestInputData = JSON.parse(message.body);
 		setLatestInput(changeData);
 		onDataReceived(changeData);
-		console.log(latestInput);
+		console.log("latest input: ",latestInput);
 		
-		console.log(changeData);
-		
+		console.log("changeData: ",changeData);	
 	});
-
-	//körs varje gång databasen uppdateras och latestInput ändras
-	//TODO ändra vilken temperatur fläkten ska gå igång och vilken index den har
-	//flyttad till sensordata
-	// useEffect(() => {
-	// 	if(latestInput) {
-	// 		if(latestInput.celsius > 24
-	// 		) {
-	// 			toggleDevice(13,true);
-	// 		} else {
-	// 			toggleDevice(13,false);
-	// 		}
-	// 	}
-	// },[latestInput]);
-	//input för vilken ljusstyrka innan lampa tänds
-	//TODO useEffect för ljussensorn/phototransistor
-	//flyttad till sensordata
-	// useEffect(() => {
-	// 	if(latestInput) {
-    //         if(latestInput.photoTransistorValue < 50) {
-    //             toggleDevice(5,true);
-    //         } else {
-    //             toggleDevice(5,false);
-    //         }
-    //     }
-	// }, [latestInput]);
-
 	return null;
 };
 
