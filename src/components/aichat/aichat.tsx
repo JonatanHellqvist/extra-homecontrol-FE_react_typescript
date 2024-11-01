@@ -16,7 +16,7 @@ function Aichat() {
 	};
 
 	useEffect(() => {
-        // Kontrollera om chatHistoriken är tom
+        //Kontrollera om chatHistoriken är tom
         if (chatHistory.length === 0 && !isWelcomeMessageAdded) {
             setChatHistory((prev) => [
                 ...prev,
@@ -24,7 +24,7 @@ function Aichat() {
             ]);
 			setIsWelcomeMessageAdded(true);
         }
-    }, [chatHistory, isWelcomeMessageAdded]); // Kör effekt när chatHistory ändras
+    }, [chatHistory, isWelcomeMessageAdded]); 
 
 	const handleSend = () => {
 		if (inputValue) {
