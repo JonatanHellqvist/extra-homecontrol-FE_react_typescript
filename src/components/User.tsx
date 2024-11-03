@@ -18,28 +18,28 @@ function User() {
 	console.log(user);
 	return (
 		<>	
-			<div>
-				{/* TODO om inloggad user annas dölj */}
-			<button onClick={() => setSubPage("mydevices")}>My Devices</button>
-			<button onClick={() => setSubPage("finddevices")}>Find Devices</button>
-			<button onClick={() => setSubPage("settings")}>Settings</button>
-			<button onClick={() => setSubPage("arduinosensordata")}>Sensor Data</button>
-			</div>
-		{
-			{
-				"mydevices":
-				<MyDevices userId={userId}/>,
-				"finddevices": 
-				// <FindDevices userId={userId}/>,
-				<FindDevicesFromAuthUser userId={userId}/>,
-				"settings": 
-				<Settings />,
-				"arduinosensordata":
-				<ArduinoSensorData/>
+			{/* Bara visa knapparna om användaren är inloggad */}
+			{user && (
+				<div>
+					<button onClick={() => setSubPage("mydevices")}>My Devices</button>
+					<button onClick={() => setSubPage("finddevices")}>Find Devices</button>
+					<button onClick={() => setSubPage("settings")}>Settings</button>
+					<button onClick={() => setSubPage("arduinosensordata")}>Sensor Data</button>
+				</div>
+			)}
 
-			}	[subPage]
-		} 
-		<Login/>
+			{/* Rendera subkomponenten baserat på valt subPage */}
+			{
+				{
+					"mydevices": <MyDevices userId={userId} />,
+					"finddevices": <FindDevicesFromAuthUser userId={userId} />,
+					"settings": <Settings />,
+					"arduinosensordata": <ArduinoSensorData />
+				}[subPage]
+			}
+
+			{/* Visa inloggningskomponenten om användaren inte är inloggad */}
+			{<Login />}
 		</>
 
 	);

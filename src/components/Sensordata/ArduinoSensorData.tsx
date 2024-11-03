@@ -111,7 +111,7 @@ function ArduinoSensorData() {
 	//TODO useEffect för ljussensorn/phototransistor
 	useEffect(() => {
 		if(latestInput && lightSens && lightSensIndex) {
-            if(latestInput.photoTransistorValue > lightSens) {
+            if(latestInput.photoTransistorValue < lightSens) {
                 toggleDeviceOn(lightSensIndex);
             } else  {
                 toggleDeviceOff(lightSensIndex);
