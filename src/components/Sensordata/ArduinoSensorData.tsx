@@ -27,20 +27,6 @@ function ArduinoSensorData() {
 	  const userId = user?.id;
 	  console.log(user.id);
 
-	//   const toggleDevice = async (deviceId:String, isOn: boolean) => {
-	// 	console.log(`Toggling Device:  ${isOn ? "ON" : "OFF"}`);
-	// 	fetch (`https://clownfish-app-2jcw3.ondigitalocean.app/hue/device/${deviceId}`, {
-	// 		method: 'PUT',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(isOn),
-	// 	})
-	// 	.then((response) => response.text())
-	// 	.then(data => {
-	// 		console.log("Response: ", data);	
-	// 	})		
-	// };
 	  const toggleDeviceOn = async (deviceId:String) => {
 		const isOn : boolean = true;
 		console.log(`Toggling Device:  ${isOn ? "ON" : "OFF"}`);
@@ -71,20 +57,6 @@ function ArduinoSensorData() {
 			console.log("Response: ", data);	
 		})		
 	};
-	// const toggleDevice = async (deviceId:String, isOn: boolean) => {
-	// 	console.log(`Toggling Device:  ${isOn ? "ON" : "OFF"}`);
-	// 	fetch (`https://clownfish-app-2jcw3.ondigitalocean.app/hue/device/${deviceId}`, {
-	// 		method: 'PUT',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(isOn),
-	// 	})
-	// 	.then((response) => response.text())
-	// 	.then(data => {
-	// 		console.log("Response: ", data);	
-	// 	})		
-	// };
 
 	useEffect (() => {
 		fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/get-latest-dht11-sensor-data`)
@@ -139,7 +111,7 @@ function ArduinoSensorData() {
 	//TODO useEffect för ljussensorn/phototransistor
 	useEffect(() => {
 		if(latestInput && lightSens && lightSensIndex) {
-            if(latestInput.photoTransistorValue > lightSens) {
+            if(latestInput.photoTransistorValue < lightSens) {
                 toggleDeviceOn(lightSensIndex);
             } else  {
                 toggleDeviceOff(lightSensIndex);
@@ -147,10 +119,6 @@ function ArduinoSensorData() {
         }
 	}, [latestInput]);
 	
-
-	//test
-	
-
 	const updateLatestInput = (newData: LatestInputData) => {
 		setLatestInput(newData);
 	  };

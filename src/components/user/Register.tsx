@@ -30,8 +30,6 @@ function Register() {
 	const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		// "type assortions"
-
 		const target = e.currentTarget as typeof e.currentTarget &  {
 			username : {value: string };
 			password : {value: string };

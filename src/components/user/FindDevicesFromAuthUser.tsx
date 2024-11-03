@@ -1,6 +1,10 @@
 
 import { useEffect, useState } from "react";
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////MODIFIERA DEVICE OM YTTERLIGGARE INFORMATION BEHÖVS///////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 interface Device {
     id: string;
 	id_v1: string;
@@ -16,13 +20,12 @@ interface Device {
     };
 
 interface FindDevicesProps {
-	userId: string; // Ta emot userId som en prop
+	userId: string; 
 }
 
 function FindDevicesFromAuthUser({ userId }: FindDevicesProps)  {
 	const [devices, setDevices] = useState<Device[]>([]);
     
-
     useEffect(() => {
         const fetchDevices = async () => {
                 fetch('https://clownfish-app-2jcw3.ondigitalocean.app/hue/devices')
@@ -41,7 +44,7 @@ function FindDevicesFromAuthUser({ userId }: FindDevicesProps)  {
 		fetchDevices();
     }, [userId]);
 
-	//TODO LÄGGA TILL DEVICE
+	//TODO LÄGGA TILL DEVICE - DENNA ÄR EN GAMMAL FRÅN LOKAL IP HANTERING PÅ BRIDGE
 
 	// const addDevice = (device: Device, index: number, userId: String) => {
 	// 	fetch(`https://clownfish-app-2jcw3.ondigitalocean.app/${userId}/list`) 
@@ -97,6 +100,7 @@ function FindDevicesFromAuthUser({ userId }: FindDevicesProps)  {
 	// 		.catch(error => console.error("Error adding device:", error));
 	// };
 
+	///////////////////TODO///////////////////////////////
 	const getDeviceInfo = async (deviceId:String) => {
 		console.log(deviceId);
 		
@@ -109,6 +113,7 @@ function FindDevicesFromAuthUser({ userId }: FindDevicesProps)  {
 		})		
 	};
 
+	///RÖR EJ
 	const toggleDevice = async (deviceId:String, isOn: boolean) => {
 		console.log(`Toggling Device:  ${isOn ? "ON" : "OFF"}`);
 		fetch (`https://clownfish-app-2jcw3.ondigitalocean.app/hue/device/${deviceId}`, {
@@ -123,7 +128,6 @@ function FindDevicesFromAuthUser({ userId }: FindDevicesProps)  {
 			console.log("Response: ", data);	
 		})		
 	};
-	
     return (
         <div id="deviceUlAuthDiv">
             <h2>Hue Devices</h2>
@@ -137,9 +141,7 @@ function FindDevicesFromAuthUser({ userId }: FindDevicesProps)  {
 							<button onClick={() => getDeviceInfo (device.services["1"].rid)}>DeviceInfo</button> 
 							<button onClick={() => toggleDevice(device.services["1"].rid, true)}>TurnOn</button> 
 							<button onClick={() => toggleDevice(device.services["1"].rid, false)}>TurnOFF</button> 
-							</div>
-
-							
+							</div>	
                         </li>
                     ))}
                 </ul>

@@ -29,7 +29,7 @@ function Login() {
 	const handleLogin = async (e:React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const res = await fetch ("https://clownfish-app-2jcw3.ondigitalocean.app/user/login", {
+			const res = await fetch ("https://clownfish-app-2jcw3.ondigitalocean.app/user/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -43,15 +43,16 @@ function Login() {
 				setLoggedInUser(data.user)
 				localStorage.setItem("loggedInUser", JSON.stringify(data));
 				console.log("Login successfull for User:", (data));	
-				window.location.href = ("https://starfish-app-a5j77.ondigitalocean.app"); //ladda om usersidan
+				
+				window.location.href = ("https://starfish-app-a5j77.ondigitalocean.app/user"); 
+				// "?page=user"
 			}		
 		} else if (res.status === 401){
 			console.log("Invalid username or password")
 			setInvalidLogin(true);
 		} else {
 			console.log("Login failed")
-		}
-		
+		}	
 	} 
 
 	const handleShowRegisterForm = () => {
@@ -62,6 +63,7 @@ function Login() {
 	const handleLogout = () => {
 		setLoggedInUser(null);
 		localStorage.removeItem("loggedInUser");
+		window.location.href = ("https://starfish-app-a5j77.ondigitalocean.app/user"); 
 	};
 	
 	return (

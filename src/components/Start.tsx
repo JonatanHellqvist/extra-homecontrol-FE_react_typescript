@@ -1,5 +1,4 @@
 
-
 function Start() {
 	return (
 		<div id="startDiv">
@@ -8,5 +7,4 @@ function Start() {
 		</div>
 	);
 }
-
 export default Start;

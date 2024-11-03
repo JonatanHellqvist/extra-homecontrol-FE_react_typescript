@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+
+////////////////////////////////////////////////////////////////////PILLLLLAAAAA EJ////////////////////////////////////////////////////////////////////
 const HueComponent: React.FC = () => {
 //   const [devices, setDevices] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
