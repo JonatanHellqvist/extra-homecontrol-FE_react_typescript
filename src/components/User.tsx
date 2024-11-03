@@ -7,7 +7,7 @@ import ArduinoSensorData from "./Sensordata/ArduinoSensorData";
 import Login from "./user/Login";
 import FindDevicesFromAuthUser from "./user/FindDevicesFromAuthUser";
 
-//ROUTER
+
 function User() {
 	const [subPage, setSubPage] = useState<string>("");
 	
@@ -18,7 +18,6 @@ function User() {
 	console.log(user);
 	return (
 		<>	
-			{/* Bara visa knapparna om användaren är inloggad */}
 			{user && (
 				<div>
 					<button onClick={() => setSubPage("mydevices")}>My Devices</button>
@@ -27,8 +26,6 @@ function User() {
 					<button onClick={() => setSubPage("arduinosensordata")}>Sensor Data</button>
 				</div>
 			)}
-
-			{/* Rendera subkomponenten baserat på valt subPage */}
 			{
 				{
 					"mydevices": <MyDevices userId={userId} />,
@@ -37,8 +34,6 @@ function User() {
 					"arduinosensordata": <ArduinoSensorData />
 				}[subPage]
 			}
-
-			{/* Visa inloggningskomponenten om användaren inte är inloggad */}
 			{<Login />}
 		</>
 
